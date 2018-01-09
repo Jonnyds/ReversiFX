@@ -1,0 +1,11 @@
+/*
+ * Name: Noam Itzhaki
+ * ID: 315773465
+ * Name: Jonathan Schwarz
+ * ID: 203672910
+ */
+
+package sample;
+
+public class Menu {
+}
