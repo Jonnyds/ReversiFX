@@ -20,10 +20,10 @@ public class Board {
      * @param black recieves the black player signed 'X'.
      */
     public void init(Player white, Player black){
-        odisc44 = new Disc(O,this.size / 2,this.size / 2);
-        xdisc45 = new Disc(X,this.size / 2,this.size / 2 + 1);
-        odisc55 = new Disc(O,this.size / 2 + 1,this.size / 2 + 1);
-        xdisc54 = new Disc(X,this.size / 2 + 1,this.size / 2);
+        Disc odisc44 = new Disc(O,this.size / 2,this.size / 2);
+        Disc xdisc45 = new Disc(X,this.size / 2,this.size / 2 + 1);
+        Disc odisc55 = new Disc(O,this.size / 2 + 1,this.size / 2 + 1);
+        Disc xdisc54 = new Disc(X,this.size / 2 + 1,this.size / 2);
         /**
          * Adding the first four discs to the board.
          */

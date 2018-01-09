@@ -71,8 +71,8 @@ public class BoardLogic {
             }
 
             if (is_empty(j, k) && count > 0) {
-                coor.x = j;
-                coor.y = k;
+                coor.getCoordinatesX() = j;
+                coor.getCoordinatesY() = k;
                 valid_points.add(coor);
                 break;
             }
@@ -262,8 +262,8 @@ public class BoardLogic {
      */
     public void print_vec(){
         for (int i = 0; i < valid_points.size(); ++i) {
-            System.out.print('(' + valid_points.get(i).x + ',');
-            System.out.print(valid_points.get(i).y + ") ");
+            System.out.print('(' + valid_points.get(i).getCoordinatesY() + ',');
+            System.out.print(valid_points.get(i).getCoordinatesX() + ") ");
         }
         System.out.println();
     }
@@ -276,8 +276,8 @@ public class BoardLogic {
 
             for (int k = 0; k < valid_points.size(); ++k) {
 
-                if ((valid_points.get(j).y == valid_points.get(k).y) &&
-                        (valid_points.get(j).x == valid_points.get(k).x) && (j != k)) {
+                if ((valid_points.get(j).getCoordinatesY() == valid_points.get(k).getCoordinatesY()) &&
+                        (valid_points.get(j).getCoordinatesX() == valid_points.get(k).getCoordinatesX()) && (j != k)) {
                     valid_points.remove(k);
                 }
             }

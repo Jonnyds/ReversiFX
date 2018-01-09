@@ -34,7 +34,7 @@ public class Player {
     public void remove_disc(Disc d) {
 
         for (int i = 0; i < counter; ++i) {
-            if (this.dlist.get(i).check_Coordinates(d)) {
+            if (this.dlist.get(i).check_coordinates(d)) {
                 this.dlist.remove(i);
                 this.counter--;
             }
@@ -56,7 +56,8 @@ public class Player {
             cin >> y;
 
             for (int move = 0; move < bl.getValidMoves().size(); move++) {
-                if (x == bl.getValidMoves()[move].x && y == bl.getValidMoves()[move].y) {
+                if (x == bl.getValidMoves().get(move).getCoordinatesX() && y ==
+                        bl.getValidMoves().get(move).getCoordinatesY()) {
                     move_found = true;
                     System.out.println("Your move is (" + x + ',' + y + ')');
                 }
