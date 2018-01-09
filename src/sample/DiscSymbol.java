@@ -8,6 +8,13 @@
 package sample;
 
 public enum DiscSymbol {
+    X('X'),
+    O('O'),
+    E(' ');
 
+    private final char name;
 
+    private DiscSymbol(char s) {
+        name = s;
+    }
 }

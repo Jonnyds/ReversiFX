@@ -27,12 +27,12 @@ public class Coordinates {
         return this.y;
     }
 
-    public void getCoordinatesX(int newX) {
+    public void setCoordinatesX(int newX) {
 
         this.x = newX;
     }
 
-    public void getCoordinatesY(int newY) {
+    public void setCoordinatesY(int newY) {
 
         this.y = newY;
     }

@@ -8,6 +8,10 @@
 package sample;
 
 import java.util.ArrayList;
+import static java.lang.Math.pow;
+import static sample.DiscSymbol.O;
+import static sample.DiscSymbol.X;
+
 
 public class GameFlow {
 
@@ -25,8 +29,8 @@ public class GameFlow {
     public GameFlow(int n) {
 
         this.playing_board = new Board(n);
-        this.white = Player(O);
-        this.black = Player(X);
+        this.white = new Player(O);
+        this.black = new Player(X);
         this.turn = X;
         this.no_more_moves = 0;
         this.boardlogic = new BoardLogic();
@@ -59,8 +63,8 @@ public class GameFlow {
      */
     public boolean isGameOver() {
 
-        int total_disc = this.white.get_disc_list().size() + black->get_disc_list().size();
-        if (total_disc != pow(boardlogic->getBoard()->get_size() - 1, 2) && (no_more_moves != 2)) {
+        int total_disc = this.white.get_disc_list().size() + black.get_disc_list().size();
+        if (total_disc != pow(boardlogic.getBoard().get_size() - 1, 2) && (no_more_moves != 2)) {
             return false;
         }
         return true;
@@ -72,7 +76,7 @@ public class GameFlow {
     public void play() {
         int i;
         Disc d;
-        Coordinates chose;
+        Coordinates chose = null;
 
         System.out.println ("It's the black player's turn \n");
 
@@ -96,7 +100,7 @@ public class GameFlow {
                 this.no_more_moves = 0;
             }
 
-            switch (this.turn.X) {
+            switch (X) {
                 case X:
                     chose = this.black.makeMove(boardlogic);
                     d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
