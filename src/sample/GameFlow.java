@@ -113,7 +113,7 @@ public class GameFlow {
                 this.no_more_moves = 0;
             }
 
-            switch (X) {
+            switch (turn) {
                 case X:
                     chose = this.black.makeMove(boardlogic);
                     d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());

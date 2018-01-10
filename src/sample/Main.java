@@ -9,7 +9,7 @@ package sample;
 
 public class Main {
     public static void main(String[] args) {
-        GameFlow g = new GameFlow();
+        GameFlow g = new GameFlow(4);
         g.initGame();
         g.play();
     }

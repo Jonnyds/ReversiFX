@@ -266,8 +266,8 @@ public class BoardLogic {
      */
     public void print_vec(){
         for (int i = 0; i < this.valid_points.size(); ++i) {
-            System.out.print('(' + "" + this.valid_points.get(i).getCoordinatesY() + "" + ','
-                  + "" + this.valid_points.get(i).getCoordinatesX() + "" + ") ");
+            System.out.print('(' + "" + this.valid_points.get(i).getCoordinatesX() + "" + ','
+                  + "" + this.valid_points.get(i).getCoordinatesY() + "" + ") ");
         }
         System.out.println();
     }
