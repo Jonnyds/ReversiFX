@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import static sample.DiscSymbol.E;
 
 public class BoardLogic {
 
@@ -71,8 +72,7 @@ public class BoardLogic {
             }
 
             if (is_empty(j, k) && count > 0) {
-                coor.getCoordinatesX() = j;
-                coor.getCoordinatesY() = k;
+                coor = new Coordinates(j,k);
                 valid_points.add(coor);
                 break;
             }

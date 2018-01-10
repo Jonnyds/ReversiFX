@@ -52,8 +52,7 @@ public class Player {
         while (!move_found) { // This part checks of the input is valid.
 
             System.out.println("please enter the Coordinates of the move you would like to do:");
-             ;
-            cin >> y;
+            /*cin >> y;*/
 
             for (int move = 0; move < bl.getValidMoves().size(); move++) {
                 if (x == bl.getValidMoves().get(move).getCoordinatesX() && y ==

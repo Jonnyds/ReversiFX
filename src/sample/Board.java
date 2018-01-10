@@ -1,5 +1,8 @@
 package sample;
 
+import static sample.DiscSymbol.O;
+import static sample.DiscSymbol.X;
+
 public class Board {
 
     private Disc[][] board; // A double pointer variable used to create a matrix (board) in the constructor.
