@@ -107,14 +107,14 @@ public class Board {
      * @return the size of the matrix.
      */
     public int get_size() {
-        return size;
+        return this.size;
     }
 
     /**
      * @return returns the game board.
      */
     public Disc[][] get_board() {
-        return board;
+        return this.board;
     }
 
 }

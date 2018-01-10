@@ -57,7 +57,7 @@ public class BoardLogic {
         int another_symbol_found = 0;
         Coordinates coor;
 
-        while (!is_board_end(j, k)) {
+        while (!this.is_board_end(j, k)) {
             if (is_empty(j, k) && count == 0) {
                 break;
             }
@@ -133,7 +133,7 @@ public class BoardLogic {
                     count++;
                 }
 
-                if (board.get_board()[j][k].get_sym() == this.player_turn.get_symbol() && count > 0) {
+                if (this.board.get_board()[j][k].get_sym() == this.player_turn.get_symbol() && count > 0) {
                     for (int l = 0; l < count; ++l) { //runs back in each direction and changes the discs to the player's type discs.
                         switch (i) {
                             case 0:
@@ -321,9 +321,9 @@ public class BoardLogic {
      * swaps between the player_turn and player_opponent when the turn is switched.
      */
     public void swapPlayers() {
-        Player temp = player_turn;
-        player_turn = player_opponent;
-        player_opponent = temp;
+        Player temp = this.player_turn;
+        this.player_turn = this.player_opponent;
+        this.player_opponent = temp;
     }
 
     /**
