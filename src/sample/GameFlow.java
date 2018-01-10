@@ -100,8 +100,8 @@ public class GameFlow {
         while (!isGameOver()) {
 
             this.playing_board.print();
-            System.out.println ("The white player has: " + this.white.get_disc_list().size() + " discs on board");
-            System.out.println ("The black player has: " + this.black.get_disc_list().size() + " discs on board \n");
+            System.out.println("The white player has: " + this.white.get_disc_list().size() + " discs on board");
+            System.out.println("The black player has: " + this.black.get_disc_list().size() + " discs on board \n");
 
             possible_moves = boardlogic.valid_moves(); // checks the valid moves.
 
@@ -133,7 +133,9 @@ public class GameFlow {
             this.boardlogic.flipping(chose.getCoordinatesX(), chose.getCoordinatesY()); //makes the move (changes discs on board).
 
             switchTurn(false);
-}
+        }
+
+        this.winMassege();
             }
 
     /**
