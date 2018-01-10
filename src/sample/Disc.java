@@ -54,6 +54,6 @@ public class Disc {
      * @return the symbol of the disc
      */
     public DiscSymbol get_sym() {
-        return symbol;
+        return this.symbol;
     }
 }
