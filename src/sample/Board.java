@@ -1,5 +1,5 @@
 package sample;
-
+import static sample.DiscSymbol.E;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
 
@@ -14,8 +14,8 @@ public class Board {
      *
      */
     public Board(int n){
-        this.board = new Disc[n][n];
-        this.size = n;
+        this.size = n + 1;
+        this.board = new Disc[size][size];
     }
     /**
      * Initializes the board with the first 4 disc objects in the middle of the matrix (the board).
@@ -23,10 +23,20 @@ public class Board {
      * @param black recieves the black player signed 'X'.
      */
     public void init(Player white, Player black){
+
+        Disc d;
+        for (int i = 0; i < this.size; i++) {
+            for(int j = 0; j <this.size; j++) {
+                d= new Disc(E,i,j);
+                this.add_to_board(d,i,j);
+            }
+        }
+
         Disc odisc44 = new Disc(O,this.size / 2,this.size / 2);
         Disc xdisc45 = new Disc(X,this.size / 2,this.size / 2 + 1);
         Disc odisc55 = new Disc(O,this.size / 2 + 1,this.size / 2 + 1);
         Disc xdisc54 = new Disc(X,this.size / 2 + 1,this.size / 2);
+
         /**
          * Adding the first four discs to the board.
          */
@@ -42,6 +52,8 @@ public class Board {
         white.add_disc(odisc55);
         black.add_disc(xdisc45);
         black.add_disc(xdisc54);
+
+
     }
 
     /**
