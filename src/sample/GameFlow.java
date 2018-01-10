@@ -74,13 +74,13 @@ public class GameFlow {
      * Manages a game after the players and board are created.
      */
     public void play() {
-        int i;
+
         Disc d;
-        Coordinates chose = null;
 
         System.out.println ("It's the black player's turn \n");
 
         int x = 0, y = 0;
+        Coordinates chose = new Coordinates(x, y);
         int total_disc = this.white.get_disc_list().size() + this.black.get_disc_list().size();
         ArrayList<Coordinates> possible_moves;
 
