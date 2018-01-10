@@ -111,32 +111,32 @@ public class GameFlow {
                 switchTurn(true);
             } else {
                 this.no_more_moves = 0;
+
+
+                switch (turn) {
+                    case X:
+                        chose = this.black.makeMove(boardlogic);
+                        d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
+                        this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
+                        this.black.add_disc(d);
+                        break;
+                    case O:
+                        chose = this.white.makeMove(boardlogic);
+                        d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
+                        this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
+                        this.white.add_disc(d);
+                        break;
+                    case E:
+                        break;
+                }
+
+                this.boardlogic.flipping(chose.getCoordinatesX(), chose.getCoordinatesY()); //makes the move (changes discs on board).
+
+                switchTurn(false);
             }
-
-            switch (turn) {
-                case X:
-                    chose = this.black.makeMove(boardlogic);
-                    d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
-                    this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
-                    this.black.add_disc(d);
-                    break;
-                case O:
-                    chose = this.white.makeMove(boardlogic);
-                    d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
-                    this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
-                    this.white.add_disc(d);
-                    break;
-                case E:
-                    break;
-            }
-
-            this.boardlogic.flipping(chose.getCoordinatesX(), chose.getCoordinatesY()); //makes the move (changes discs on board).
-
-            switchTurn(false);
         }
-
         this.winMassege();
-            }
+    }
 
     /**
      * A function that switches the turns.
