@@ -32,8 +32,8 @@ public class BoardLogic {
         ArrayList<Disc> list = player_turn.get_disc_list();
         for (int i = 0; i < list.size(); ++i) { // runs on a player's disc list.
             for (direction = 0; direction < 8; ++direction) { // runs in each direction once.
-                j = list.get(i).getloc_x();
-                k = list.get(i).getloc_y();
+                j = list.get(i).getLocationRow();
+                k = list.get(i).getLocationColumn();
                 check_direction(direction ,j ,k );
             }
 
@@ -77,13 +77,15 @@ public class BoardLogic {
                 break;
             }
             switch (i) { // checks the directions.
-                case 0: j++;
+                case 0:
+                    j++;
                     break;
                 case 1:
                     j++;
                     k++;
                     break;
-                case 2: k++;
+                case 2:
+                    k++;
                     break;
                 case 3:
                     j--;
@@ -101,7 +103,8 @@ public class BoardLogic {
                     j++;
                     k--;
                     break;
-                default:break;
+                default:
+                    break;
             }
         }
     }

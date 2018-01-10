@@ -49,4 +49,11 @@ public class Disc {
         return (this.coordinates_on_board.getCoordinatesX() == d.getLocationRow()
                 && coordinates_on_board.getCoordinatesY() == d.getLocationColumn());
     }
+
+    /**
+     * @return the symbol of the disc
+     */
+    public DiscSymbol get_sym() {
+        return symbol;
+    }
 }

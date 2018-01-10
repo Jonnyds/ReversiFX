@@ -66,7 +66,7 @@ public class Board {
                     if (j == 0 && i > 0) {
                         System.out.print(i + '|');
                     } else {
-                        System.out.print((char) this.board[i][j].get_sym() + '|');
+                        System.out.print(this.board[i][j].get_sym() + "" + '|');
                     }
                 }
 

@@ -33,7 +33,7 @@ public class GameFlow {
         this.black = new Player(X);
         this.turn = X;
         this.no_more_moves = 0;
-        this.boardlogic = new BoardLogic();
+        this.boardlogic = new BoardLogic(this.playing_board, this.black, this.white);
     }
 
     /**
