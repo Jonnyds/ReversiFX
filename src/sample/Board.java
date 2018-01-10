@@ -4,10 +4,12 @@ import static sample.DiscSymbol.E;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
 
+
 public class Board {
 
     private Disc[][] board; // A double pointer variable used to create a matrix (board) in the constructor.
     private int size;
+    final int defaultSize = 8;
     /**
      * Board object constructor.
      * creates a board according to the size requested.
@@ -16,6 +18,15 @@ public class Board {
      */
     public Board(int n){
         this.size = n + 1;
+        this.board = new Disc[size][size];
+    }
+
+    /**
+     * A default constructor.
+     * creates a 8X8 board.
+     */
+    public Board(){
+        this.size = defaultSize + 1;
         this.board = new Disc[size][size];
     }
     /**

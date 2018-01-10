@@ -21,6 +21,7 @@ public class BoardLogic {
         this.board = game_board;
         this.player_turn = player;
         this.player_opponent = opponent;
+        this.valid_points = new ArrayList<Coordinates>();
     }
 
     /**
@@ -29,7 +30,7 @@ public class BoardLogic {
      */
     public ArrayList<Coordinates> valid_moves(){
         int j, k, direction = 0;
-        ArrayList<Disc> list = player_turn.get_disc_list();
+        ArrayList<Disc> list = this.player_turn.get_disc_list();
         for (int i = 0; i < list.size(); ++i) { // runs on a player's disc list.
             for (direction = 0; direction < 8; ++direction) { // runs in each direction once.
                 j = list.get(i).getLocationRow();
@@ -39,7 +40,7 @@ public class BoardLogic {
 
         }
         check_double();
-        return valid_points;
+        return this.valid_points;
     }
 
 
@@ -64,7 +65,7 @@ public class BoardLogic {
             if (is_opponent(j, k)) {
                 count++;
             }
-            if(player_turn.get_symbol() == board.get_board()[j][k].get_sym( )) {
+            if(this.player_turn.get_symbol() == this.board.get_board()[j][k].get_sym( )) {
                 another_symbol_found++;
                 if (another_symbol_found == 2) {
                     break;
@@ -73,7 +74,7 @@ public class BoardLogic {
 
             if (is_empty(j, k) && count > 0) {
                 coor = new Coordinates(j,k);
-                valid_points.add(coor);
+                this.valid_points.add(coor);
                 break;
             }
             switch (i) { // checks the directions.
@@ -132,8 +133,8 @@ public class BoardLogic {
                     count++;
                 }
 
-                if (board.get_board()[j][k].get_sym() == player_turn.get_symbol() && count > 0) {
-                    for (int l = 0; l < count; ++l) { // runs back in each direction and changes the discs to the player's type discs.
+                if (board.get_board()[j][k].get_sym() == this.player_turn.get_symbol() && count > 0) {
+                    for (int l = 0; l < count; ++l) { //runs back in each direction and changes the discs to the player's type discs.
                         switch (i) {
                             case 0:
                                 j--;
@@ -224,10 +225,10 @@ public class BoardLogic {
      */
     public void add_to_board(int i, int j){
         Disc d;
-        d = new Disc(player_turn.get_symbol(),i,j);
-        board.add_to_board(d ,i ,j );
-        player_opponent.remove_disc(d);
-        player_turn.add_disc(d);
+        d = new Disc(this.player_turn.get_symbol(),i,j);
+        this.board.add_to_board(d ,i ,j );
+        this.player_opponent.remove_disc(d);
+        this.player_turn.add_disc(d);
     }
 
     /**
@@ -237,7 +238,7 @@ public class BoardLogic {
      * @return if the indexes stepped out of the board's bounds.
      */
     public boolean is_board_end(int i, int j) {
-        return (1 > i || i > board.get_size() - 1) || (1 > j || j > board.get_size() - 1);
+        return (1 > i || i > this.board.get_size() - 1) || (1 > j || j > this.board.get_size() - 1);
     }
 
     /**
@@ -247,7 +248,7 @@ public class BoardLogic {
      * @return if the cell is empty (had an empty disc).
      */
     public boolean is_empty(int i, int j) {
-        return board.get_board()[i][j].get_sym() == E;
+        return this.board.get_board()[i][j].get_sym() == E;
     }
 
     /**
@@ -257,16 +258,16 @@ public class BoardLogic {
      * @return if the cell belongs to the opponents.
      */
     public boolean is_opponent(int i, int j) {
-        return board.get_board()[i][j].get_sym() == player_opponent.get_symbol();
+        return this.board.get_board()[i][j].get_sym() == this.player_opponent.get_symbol();
     }
 
     /**
      * Prints the valid moves vector.
      */
     public void print_vec(){
-        for (int i = 0; i < valid_points.size(); ++i) {
-            System.out.print('(' + valid_points.get(i).getCoordinatesY() + ',');
-            System.out.print(valid_points.get(i).getCoordinatesX() + ") ");
+        for (int i = 0; i < this.valid_points.size(); ++i) {
+            System.out.print('(' + "" + this.valid_points.get(i).getCoordinatesY() + "" + ','
+                  + "" + this.valid_points.get(i).getCoordinatesX() + "" + ") ");
         }
         System.out.println();
     }
@@ -275,13 +276,13 @@ public class BoardLogic {
      * Checks and deletes double appearance of Coordinates of valid moves vector.
      */
     public void check_double() {
-        for (int j = 0; j < valid_points.size(); ++j) {
+        for (int j = 0; j < this.valid_points.size(); ++j) {
 
-            for (int k = 0; k < valid_points.size(); ++k) {
+            for (int k = 0; k < this.valid_points.size(); ++k) {
 
-                if ((valid_points.get(j).getCoordinatesY() == valid_points.get(k).getCoordinatesY()) &&
-                        (valid_points.get(j).getCoordinatesX() == valid_points.get(k).getCoordinatesX()) && (j != k)) {
-                    valid_points.remove(k);
+                if ((this.valid_points.get(j).getCoordinatesY() == this.valid_points.get(k).getCoordinatesY()) &&
+                        (this.valid_points.get(j).getCoordinatesX() == this.valid_points.get(k).getCoordinatesX()) && (j != k)) {
+                    this.valid_points.remove(k);
                 }
             }
         }

@@ -1,6 +1,14 @@
+/*
+ * Name: Noam Itzhaki
+ * ID: 315773465
+ * Name: Jonathan Schwarz
+ * ID: 203672910
+ */
+
 package sample;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
 
@@ -42,6 +50,8 @@ public class Player {
     }
 
     public Coordinates makeMove(BoardLogic bl) {
+        Scanner var = new Scanner(System.in);
+
         boolean move_found = false;
         Coordinates coor;
         int x = 0, y = 0;
@@ -52,8 +62,8 @@ public class Player {
         while (!move_found) { // This part checks of the input is valid.
 
             System.out.println("please enter the Coordinates of the move you would like to do:");
-            /*cin >> y;*/
-
+            y = var.nextInt();
+            x = var.nextInt();
             for (int move = 0; move < bl.getValidMoves().size(); move++) {
                 if (x == bl.getValidMoves().get(move).getCoordinatesX() && y ==
                         bl.getValidMoves().get(move).getCoordinatesY()) {

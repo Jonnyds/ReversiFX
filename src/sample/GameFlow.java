@@ -37,6 +37,19 @@ public class GameFlow {
     }
 
     /**
+     * A default constructor to gameflow.
+     */
+    public GameFlow() {
+
+        this.playing_board = new Board();
+        this.white = new Player(O);
+        this.black = new Player(X);
+        this.turn = X;
+        this.no_more_moves = 0;
+        this.boardlogic = new BoardLogic(this.playing_board, this.black, this.white);
+    }
+
+    /**
      * Initializes the board.
      */
     public void initGame() {
