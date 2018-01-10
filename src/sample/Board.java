@@ -1,4 +1,5 @@
 package sample;
+
 import static sample.DiscSymbol.E;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
@@ -73,12 +74,12 @@ public class Board {
         for (int i = 0; i < this.size; ++i) {
             for (int j = 0; j < this.size; ++j) {
                 if (i == 0 && j > 0) {
-                    System.out.print(j + '|');
+                    System.out.print(j +""  + '|');
                 } else {
                     if (j == 0 && i > 0) {
-                        System.out.print(i + '|');
+                        System.out.print(i + "" + '|');
                     } else {
-                        System.out.print(this.board[i][j].get_sym() + "" + '|');
+                        System.out.print(this.board[i][j].get_sym().asChar() + "" + '|');
                     }
                 }
 

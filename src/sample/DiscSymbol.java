@@ -12,9 +12,9 @@ public enum DiscSymbol {
     O('O'),
     E(' ');
 
-    private char name;
+    public final char name;
 
-    private DiscSymbol(char s) {
+    DiscSymbol(char s) {
         this.name = s;
     }
     public char asChar() {
