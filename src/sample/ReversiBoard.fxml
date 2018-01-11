@@ -1,12 +1,40 @@
-<?import javafx.scene.layout.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<HBox xmlns:fx ="http://javafx.com/fxml/1"
-        fx:controller= " sample.ReversiBoard"
-        fx:id="root" spacing ="10"
-><VBox spacing ="10">
-        <Button> Start Game
-        </Button>
-        <Button>End Game
-        </Button>
-</VBox>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+           <children>
+               <GridPane alignment="CENTER_LEFT" prefWidth="300" prefHeight="400">
+               </GridPane>
+               <VBox spacing="15" prefHeight="400" prefWidth="100">
+                   <children>
+                       <Button text="Start" translateX="15" translateY="50" visible="true"></Button>
+                       <Button text="Settings" translateX="15" translateY="65" visible="true"></Button>
+                       <Button text="Exit" translateX="15" translateY="80" visible="true"></Button>
+
+                       <Text text="Current Player:" visible="false"></Text>
+                       <Label text="Black" visible="false"></Label>
+
+                       <Label text="Black" visible="false"></Label>
+                       <Text text="player score:" visible="false"></Text>
+                       <Label text="2" visible="false"></Label>
+
+                       <Label text="White" visible="false"></Label>
+                       <Text text="player score:" visible="false"></Text>
+                       <Label text="2" visible="false"></Label>
+
+                   </children>
+               </VBox>
+               <VBox prefHeight="400" prefWidth="300">
+
+
+               </VBox>
+
+         </children>
 </HBox>

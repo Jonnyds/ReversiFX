@@ -26,7 +26,7 @@ public class ReversiBoard extends GridPane {
      */
     public ReversiBoard(DiscSymbol[][] board) {
         this.board = board;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(" ReversiBoard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Reversi.fxml" ));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
