@@ -6,7 +6,8 @@
         fx:controller= " sample.ReversiBoard"
         fx:id="root" spacing ="10"
 ><VBox spacing ="10">
-        <Button> Start Game </Button>
-        <Button> End Game </Button>
+        <Button text="Start" translateX="15" translateY="50" visible="true"></Button>
+        <Button text="Settings" translateX="15" translateY="65" visible="true"></Button>
+        <Button text="Exit" translateX="15" translateY="80" visible="true"></Button>
 </VBox>
 </HBox>
