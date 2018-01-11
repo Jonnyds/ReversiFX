@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<HBox xmlns:fx="http://javafx.com/fxml/8" fx:controller="sample.ReversiBoard" fx:id="root"
+<HBox xmlns:fx="http://javafx.com/fxml/8" fx:controller="sample.Board" fx:id="root"
       prefHeight="400.0" prefWidth="400.0">
            <children>
                <GridPane   alignment="CENTER_LEFT" prefWidth="300" prefHeight="400">

@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            HBox root = (HBox) FXMLLoader.load(getClass().getResource("ReversiBoard.fxml"));
+            HBox root = (HBox) FXMLLoader.load(getClass().getResource("Board.fxml"));
             Scene scene = new Scene(root, 520, 400);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi");
