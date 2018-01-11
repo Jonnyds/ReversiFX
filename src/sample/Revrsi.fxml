@@ -5,13 +5,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
-
-
 <?import javafx.scene.text.Text?>
+
+
 <HBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
            <children>
                <GridPane alignment="CENTER_LEFT" prefWidth="300" prefHeight="400">
                </GridPane>
+               //buttons
                <VBox spacing="15" prefHeight="400" prefWidth="100">
                    <children>
                        <Button text="Start" translateX="15" translateY="50" visible="true"></Button>
@@ -31,5 +32,16 @@
 
                    </children>
                </VBox>
+               //game board
+               <VBox prefHeight="400" prefWidth="300">
+                   <children>
+
+
+
+                   </children>
+
+
+               </VBox>
+
          </children>
 </HBox>

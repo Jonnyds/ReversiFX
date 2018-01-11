@@ -3,6 +3,8 @@ package sample;
 import static sample.DiscSymbol.E;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
+import static sample.DiscSymbol.P;
+import static sample.DiscSymbol.M;
 
 
 public class Board {
@@ -85,19 +87,19 @@ public class Board {
         for (int i = 0; i < this.size; ++i) {
             for (int j = 0; j < this.size; ++j) {
                 if (i == 0 && j > 0) {
-                    System.out.print(j +""  + '|');
+                    System.out.print(j + "" + P.asChar());
                 } else {
                     if (j == 0 && i > 0) {
-                        System.out.print(i + "" + '|');
+                        System.out.print(i + "" + P.asChar());
                     } else {
-                        System.out.print(this.board[i][j].get_sym().asChar() + "" + '|');
+                        System.out.print(this.board[i][j].get_sym().asChar() + "" + P.asChar());
                     }
                 }
 
             }
             System.out.println();
             for (int j = 0; j < this.size; ++j) {
-                System.out.print("- ");
+                System.out.print(M.asChar() + " ");
             }
             System.out.println();
         }

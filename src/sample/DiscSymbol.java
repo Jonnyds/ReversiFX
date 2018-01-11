@@ -10,7 +10,9 @@ package sample;
 public enum DiscSymbol {
     X('X'),
     O('O'),
-    E(' ');
+    E(' '),
+    P('|'),
+    M('-');
 
     public final char name;
 
