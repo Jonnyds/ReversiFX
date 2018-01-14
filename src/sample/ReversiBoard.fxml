@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.text.Text?>
-
-
-<HBox xmlns:fx="http://javafx.com/fxml/8" fx:controller="sample.Board" fx:id="root"
-      prefHeight="400.0" prefWidth="400.0">
-           <children>
-               <GridPane   alignment="CENTER_LEFT" prefWidth="300" prefHeight="400">
-               </GridPane>
-               <VBox spacing="15" prefHeight="400" prefWidth="100">
-                   <children>
-
-                       <Text text="Current Player:" visible="true"></Text>
-                       <Label text="Black" visible="true"></Label>
-
-                       <Label text="Black" visible="true"></Label>
-                       <Text text="player score:" visible="true"></Text>
-                       <Label text="2" visible="true"></Label>
-
-                       <Label text="White" visible="true"></Label>
-                       <Text text="player score:" visible="true"></Text>
-                       <Label text="2" visible="true"></Label>
-
-                   </children>
-               </VBox>
-               <VBox prefHeight="400" prefWidth="300">
-
-
-               </VBox>
-
-         </children>
-</HBox>
+<fx:root gridLinesVisible="true" type="javafx.scene.layout.GridPane"
+         xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.0">
+</fx:root>

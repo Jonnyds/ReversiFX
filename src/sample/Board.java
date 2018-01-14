@@ -1,10 +1,14 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.BarChart;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 
 import java.io.IOException;
 
@@ -15,10 +19,12 @@ import static sample.DiscSymbol.P;
 import static sample.DiscSymbol.M;
 
 
-public class Board extends GridPane {
+public class Board extends GridPane{
 
     private Disc[][] board; // A double pointer variable used to create a matrix (board) in the constructor.
     private int size;
+    @FXML
+    public GridPane root;
     final int defaultSize = 8;
     /**
      * Board object constructor.
@@ -29,15 +35,14 @@ public class Board extends GridPane {
     public Board(int n){
         this.size = n + 1;
         this.board = new Disc[size][size];
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml" ));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
         try {
             fxmlLoader.load();
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
+        }*/
+
     }
 
     /**
@@ -47,15 +52,12 @@ public class Board extends GridPane {
     public Board(){
         this.size = defaultSize + 1;
         this.board = new Disc[size][size];
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml" ));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
         try {
             fxmlLoader.load();
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
+        }*/
     }
     /**
      * Initializes the board with the first 4 disc objects in the middle of the matrix (the board).
@@ -147,24 +149,21 @@ public class Board extends GridPane {
 
     public void draw() {
 
-        this.getChildren().clear();
-
         //size of the board
         int height = (int) this.getPrefHeight();
         int width = (int) this.getPrefWidth();
 
         //size of a single cell on the board
-        int cellHeight = height / board.length;
-        int cellWidth = width / board[0].length;
+        int cellHeight = height / this.size;
+        int cellWidth = width / this.size;
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
+        for (int i = 0; i < this.size; i++) {
+            for (int j = 0; j < this.size; j++) {
 
-                Rectangle boardRec = new Rectangle(width, height, Color.AQUA);
-                this.add(boardRec, j, i);
-
-                if (board[i][j].get_sym() == P)
-                    this.add(new Rectangle(cellWidth, cellHeight, Color.BLACK), j, i);
+                Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.LAVENDER);
+                boardRec.setStroke(Color.BLACK);
+                boardRec.setStrokeType(StrokeType.INSIDE);
+                this.add(boardRec,j,i);
 
                 if (board[i][j].get_sym() == X) {
                     Circle c = new Circle(cellHeight / 3);
@@ -172,7 +171,9 @@ public class Board extends GridPane {
                     c.setCenterY(cellHeight / 2);
                     c.setFill(Color.BLACK);
                     c.setStroke(Color.BLACK);
+                    c.setStrokeType(StrokeType.OUTSIDE);
                     this.add(c, j, i);
+                    continue;
                 }
 
                 if (board[i][j].get_sym() == O) {
@@ -181,8 +182,12 @@ public class Board extends GridPane {
                     c.setCenterY(cellHeight / 2);
                     c.setFill(Color.WHITE);
                     c.setStroke(Color.WHITE);
+                    c.setStrokeType(StrokeType.OUTSIDE);
+                  //  this.add(boardRec,i,j);
                     this.add(c, j, i);
+                    continue;
                 }
+                this.add(boardRec,i,j);
             }
         }
     }

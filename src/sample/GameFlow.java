@@ -98,9 +98,9 @@ public class GameFlow {
         ArrayList<Coordinates> possible_moves;
 
         while (!isGameOver()) {
-
-            this.playing_board.print();
             this.playing_board.draw();
+            this.playing_board.print();
+
             System.out.println("The white player has: " + this.white.get_disc_list().size() + " discs on board");
             System.out.println("The black player has: " + this.black.get_disc_list().size() + " discs on board \n");
 
