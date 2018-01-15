@@ -33,6 +33,6 @@
                     GridPane.rowIndex="4" GridPane.columnIndex="0"/>
             <ChoiceBox fx:id="board_size"
                     GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <Button id="endGameButton" text="End Game" onMouseClicked="#endGameEvent"
+            <Button id="endGameButton" text="Back to Menu" onMouseClicked="#endGameEvent"
                     GridPane.rowIndex="5" GridPane.columnIndex="0">Back</Button>
 </GridPane>
