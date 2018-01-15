@@ -169,7 +169,15 @@ public class GameFlow {
                 break;
         }
     }
-            }
+
+    /**
+     *
+     * @return the current playing board.
+     */
+    public Board getPlaying_board() {
+    return this.playing_board;
+   }
+}
 
 
 
