@@ -16,7 +16,8 @@
         </Label>
         <Button fx:id="startButton" text="Start Game" prefWidth="150" prefHeight="40"
         onMouseClicked="#startgame">Start Game</Button>
-        <Button fx:id="settingButton" text="Settings" prefWidth="150" prefHeight="40">Setting</Button>
+        <Button fx:id="settingButton" text="Settings" prefWidth="150" prefHeight="40"
+        onMouseClicked="#movetosettings">Setting</Button>
         <Button fx:id="endGameButton" text="End Game" prefWidth="150" prefHeight="40"
                 onMouseClicked="#endGameEvent">End Game</Button>
     </children>
