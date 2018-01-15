@@ -22,9 +22,9 @@ public class SettController implements Initializable {
     @FXML
     private ChoiceBox openPlayer;
     @FXML
-    private ChoiceBox playerXcolor;
+    private ChoiceBox player1color;
     @FXML
-    private ChoiceBox playerOcolor;
+    private ChoiceBox player2color;
     @FXML
     private ChoiceBox board_size;
     @FXML
@@ -36,9 +36,11 @@ public class SettController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        openPlayer.setItems(FXCollections.observableArrayList("Player X", "Player O "));
-        playerXcolor.setItems(FXCollections.observableArrayList("Black", "Blue", "Yellow", "Pink", "Purple", "Cyan"));
-        playerOcolor.setItems(FXCollections.observableArrayList("White", "Blue", "Yellow", "Pink", "Purple", "Cyan"));
+        openPlayer.setItems(FXCollections.observableArrayList("Player 1", "Player 2 "));
+        player1color.setItems(FXCollections.observableArrayList("Black","White", "Blue", "Yellow", "Pink",
+                "Purple", "Cyan"));
+        player2color.setItems(FXCollections.observableArrayList("Black","White", "Blue", "Yellow", "Pink",
+                "Purple", "Cyan"));
         board_size.setItems(FXCollections.observableArrayList("4x4", "6x6", "8x8", "10x10", "12x12", "14x14", "16x16",
                 "18x18", "20x20"));
         ChoiceBox cb = new ChoiceBox();

@@ -9,25 +9,30 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.cell.ChoiceBoxListCell?>
+<?import javafx.scene.text.Font?>
 <GridPane fx:id="setty" xmlns="http://javafx.com/javafx/8.0.0"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettController" alignment="center"
           hgap="10" vgap="10"> <padding><Insets top="25" right="25" bottom="10"
                                                left="25"></Insets></padding>
             <Text text="SETTINGS"
                   GridPane.rowIndex="0" GridPane.columnIndex="0"
-                  GridPane.columnSpan="2"/>
+                  GridPane.columnSpan="2">
+            <font>
+                <Font size="40" ></Font>
+            </font>
+            </Text>
             <Label text="Opening Player:"
                    GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <ChoiceBox fx:id="openPlayer"
                        GridPane.rowIndex="1" GridPane.columnIndex="1"
             />
-            <Label text="Player X Color:"
+            <Label text="Player 1 Color:"
                    GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <ChoiceBox fx:id="playerXcolor"
+            <ChoiceBox fx:id="player1color"
                            GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Label text="Player O Color:"
+            <Label text="Player 2 Color:"
                    GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <ChoiceBox fx:id="playerOcolor"
+            <ChoiceBox fx:id="player2color"
                        GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             <Label text="Board Size:"
                     GridPane.rowIndex="4" GridPane.columnIndex="0"/>
