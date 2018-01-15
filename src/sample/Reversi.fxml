@@ -11,7 +11,7 @@
                         <children>
                                 <Button id="startButton" text="Start Game">Start Game</Button>
                                 <Button id="settingButton" text="Settings">Setting</Button>
-                                <Button id="endGameButton" text="End Game">End Game</Button>
+                                <Button id="endGameButton" text="End Game" onMouseClicked="#endGameEvent">End Game</Button>
                         </children>
                 </VBox>
         </children>

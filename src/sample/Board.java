@@ -1,22 +1,13 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.chart.BarChart;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 
-import java.io.IOException;
-
-import static sample.DiscSymbol.E;
-import static sample.DiscSymbol.O;
-import static sample.DiscSymbol.X;
-import static sample.DiscSymbol.P;
-import static sample.DiscSymbol.M;
+import static sample.DiscSymbol.*;
 
 
 public class Board extends GridPane{
@@ -163,7 +154,6 @@ public class Board extends GridPane{
                 Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.LAVENDER);
                 boardRec.setStroke(Color.BLACK);
                 boardRec.setStrokeType(StrokeType.INSIDE);
-                this.add(boardRec,j,i);
 
                 if (board[i][j].get_sym() == X) {
                     Circle c = new Circle(cellHeight / 3);
@@ -171,7 +161,10 @@ public class Board extends GridPane{
                     c.setCenterY(cellHeight / 2);
                     c.setFill(Color.BLACK);
                     c.setStroke(Color.BLACK);
+                    c.setStroke(Color.TRANSPARENT);
                     c.setStrokeType(StrokeType.OUTSIDE);
+                    c.setStrokeWidth(cellHeight/6);
+                    this.add(boardRec,j,i);
                     this.add(c, j, i);
                     continue;
                 }
@@ -182,12 +175,14 @@ public class Board extends GridPane{
                     c.setCenterY(cellHeight / 2);
                     c.setFill(Color.WHITE);
                     c.setStroke(Color.WHITE);
+                    c.setStroke(Color.TRANSPARENT);
                     c.setStrokeType(StrokeType.OUTSIDE);
-                  //  this.add(boardRec,i,j);
+                    c.setStrokeWidth(cellHeight/6);
+                    this.add(boardRec,j,i);
                     this.add(c, j, i);
                     continue;
                 }
-                this.add(boardRec,i,j);
+                this.add(boardRec,j,i);
             }
         }
     }
