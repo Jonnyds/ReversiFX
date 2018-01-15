@@ -27,7 +27,7 @@ public class Board extends GridPane{
         this.size = n + 1;
         this.board = new Disc[size][size];
 
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -43,7 +43,7 @@ public class Board extends GridPane{
     public Board(){
         this.size = defaultSize + 1;
         this.board = new Disc[size][size];
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -148,8 +148,8 @@ public class Board extends GridPane{
         int cellHeight = height / this.size;
         int cellWidth = width / this.size;
 
-        for (int i = 0; i < this.size; i++) {
-            for (int j = 0; j < this.size; j++) {
+        for (int i = 1; i < this.size; i++) {
+            for (int j = 1; j < this.size; j++) {
 
                 Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.LAVENDER);
                 boardRec.setStroke(Color.BLACK);

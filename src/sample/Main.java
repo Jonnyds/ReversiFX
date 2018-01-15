@@ -3,7 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try
         {
-            HBox root = (HBox) FXMLLoader.load(getClass().getResource("Reversi.fxml"));
+            VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene scene = new Scene(root, 520, 400);
             // scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
