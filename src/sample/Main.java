@@ -23,11 +23,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public static void
-    main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
-        GameFlow g = new GameFlow();
-        g.initGame();
-        g.play();
     }
 }

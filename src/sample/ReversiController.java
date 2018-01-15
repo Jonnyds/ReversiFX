@@ -12,8 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static java.lang.System.exit;
-import static sample.DiscSymbol.O;
-import static sample.DiscSymbol.X;
 
 public class ReversiController implements Initializable {
 
@@ -51,7 +49,7 @@ public class ReversiController implements Initializable {
 
     @Override
         public void initialize(URL location, ResourceBundle resource) {
-            Board reversiBoard = new Board();
+          /*  Board reversiBoard = new Board();
             GameFlow g =  new GameFlow(8);
             reversiBoard.init(new Player(X), new Player(O));
             reversiBoard.setPrefWidth(400);
@@ -68,7 +66,7 @@ public class ReversiController implements Initializable {
                 reversiBoard.draw();
             });
             //this.VBOX.getChildren().get(2).setOnMouseClicked(event -> {endGameEvent();});
-           // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});
+           // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});*/
         }
     }
 

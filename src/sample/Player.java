@@ -7,6 +7,8 @@
 
 package sample;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,15 +17,17 @@ public class Player {
     private DiscSymbol symbol; //The player's symbol.
     private ArrayList<Disc> dlist; //The player's disc list.
     private int counter; //The number of discs the player has of board.
+    Color color;
 
     /**
      * A player's constructor.
      * @param sym the player's symbol.
      */
-    public Player(DiscSymbol sym) {
+    public Player(DiscSymbol sym,Color c) {
         this.symbol = sym;
         this.dlist = new ArrayList<Disc>();
         this.counter = 0;
+        this.color = c;
     }
 
     /**

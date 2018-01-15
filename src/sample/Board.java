@@ -26,30 +26,8 @@ public class Board extends GridPane{
     public Board(int n){
         this.size = n + 1;
         this.board = new Disc[size][size];
-
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }*/
-
     }
 
-    /**
-     * A default constructor.
-     * creates a 8X8 board.
-     */
-    public Board(){
-        this.size = defaultSize + 1;
-        this.board = new Disc[size][size];
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }*/
-    }
     /**
      * Initializes the board with the first 4 disc objects in the middle of the matrix (the board).
      * @param white recieves the white player signed 'O'.

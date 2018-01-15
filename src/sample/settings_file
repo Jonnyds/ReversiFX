@@ -1,4 +1,4 @@
-opening_player:playerX
-player_X_color:BLACK
-player_O_color:WHITE
+opening_player:Player 2 
+player_1_color:Yellow
+player_2_color:White
 board_size:8
