@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,7 +27,6 @@ public class Menu implements Initializable {
 
     @FXML
     private VBox VBOX;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,6 +48,14 @@ public class Menu implements Initializable {
 
     public void startgame(MouseEvent mouseEvent) throws IOException {
         HBox root = (HBox) FXMLLoader.load(getClass().getResource("Reversi.fxml"));
+        Stage stage = (Stage) this.VBOX.getScene().getWindow();
+        Scene s = new Scene(root, 520,400);
+        stage.setScene(s);
+        stage.show();
+    }
+
+    public void movetosettings(MouseEvent mouseEvent) throws IOException {
+        GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
         Scene s = new Scene(root, 520,400);
         stage.setScene(s);
