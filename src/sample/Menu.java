@@ -31,14 +31,14 @@ public class Menu implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.VBOX.getChildren().get(0).setTranslateX(180);
+        this.VBOX.getChildren().get(0).setTranslateX(130);
         this.VBOX.getChildren().get(0).setTranslateY(15);
         this.VBOX.getChildren().get(1).setTranslateX(185);
-        this.VBOX.getChildren().get(1).setTranslateY(150);
+        this.VBOX.getChildren().get(1).setTranslateY(70);
         this.VBOX.getChildren().get(2).setTranslateX(185);
-        this.VBOX.getChildren().get(2).setTranslateY(180);
+        this.VBOX.getChildren().get(2).setTranslateY(90);
         this.VBOX.getChildren().get(3).setTranslateX(185);
-        this.VBOX.getChildren().get(3).setTranslateY(210);
+        this.VBOX.getChildren().get(3).setTranslateY(110);
 
     }
 

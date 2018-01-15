@@ -5,10 +5,15 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
 <VBox fx:id="VBOX" fx:controller="sample.Menu" xmlns="http://javafx.com/javafx/8.0.0"
       xmlns:fx="http://javafx.com/fxml/1" >
     <children>
-        <Label fx:id="welcome" text="WELCOME" prefHeight="40" prefWidth="70" ></Label>
+        <Label fx:id="welcome" text="WELCOME" prefHeight="90" prefWidth="300" >
+            <font>
+                <Font size="50" ></Font>
+            </font>
+        </Label>
         <Button fx:id="startButton" text="Start Game" prefWidth="150" prefHeight="40"
         onMouseClicked="#startgame">Start Game</Button>
         <Button fx:id="settingButton" text="Settings" prefWidth="150" prefHeight="40">Setting</Button>
