@@ -46,12 +46,13 @@ public class Menu implements Initializable {
         exit(0);
     }
 
-    public void startgame(MouseEvent mouseEvent) throws IOException {
+    public void startgame(MouseEvent mouseEven) throws IOException {
         HBox root = (HBox) FXMLLoader.load(getClass().getResource("Reversi.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
         Scene s = new Scene(root, 520,400);
         stage.setScene(s);
         stage.show();
+
     }
 
     public void movetosettings(MouseEvent mouseEvent) throws IOException {

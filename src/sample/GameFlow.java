@@ -55,6 +55,7 @@ public class GameFlow implements Initializable {
         this.boardlogic = new BoardLogic(this.playing_board, this.black, this.white);
     }
 
+    public GameFlow(){}
 
     /**
      * Initializes the board.
@@ -223,13 +224,13 @@ public class GameFlow implements Initializable {
             e.printStackTrace();
         }
 
-
-
         GameFlow g = new GameFlow(size_n, color1, color2);
         g.getPlaying_board().setPrefWidth(400);
         g.getPlaying_board().setPrefHeight(400);
+        g.initGame();
         root.getChildren().add(0, g.getPlaying_board());
         g.getPlaying_board().draw();
+
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 120;
             g.getPlaying_board().setPrefWidth(boardNewWidth);
@@ -240,8 +241,7 @@ public class GameFlow implements Initializable {
             g.getPlaying_board().draw();
         });
 
-        g.initGame();
-        g.play();
+        //g.play();
         //this.VBOX.getChildren().get(2).setOnMouseClicked(event -> {endGameEvent();});
         // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});
     }
