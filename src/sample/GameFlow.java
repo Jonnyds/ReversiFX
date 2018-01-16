@@ -206,10 +206,10 @@ public class GameFlow implements Initializable {
                         open = parts[1];
                         break;
                     case "player_1_color":
-                        color1 = fromFileToColor(parts[1]);
+                        color1 = Color.valueOf(parts[1]);
                         break;
                     case "player_2_color":
-                        color2 = fromFileToColor(parts[1]);
+                        color2 = Color.valueOf(parts[1]);
                         break;
                     case "board_size":
                         size_n = Integer.parseInt(parts[1]);
@@ -248,28 +248,7 @@ public class GameFlow implements Initializable {
     public void endGameEvent() throws IOException {
         exit(0);
     }
-
-
-    public Color fromFileToColor(String colstr) {
-        switch (colstr) {
-            case "Black":
-                return Color.BLACK;
-            case "White":
-                return Color.WHITE;
-            case "Blue":
-                return Color.BLUEVIOLET;
-            case "Yellow":
-                return Color.YELLOW;
-            case "Pink":
-                return Color.PINK;
-            case "Purple":
-                return Color.PURPLE;
-            case "Cyan":
-                return Color.CYAN;
-        }
-
-        return Color.BLACK;
-    }
+    
 
     public Coordinates pressTurnCoor(double x, double y) {
 
