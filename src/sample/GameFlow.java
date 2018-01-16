@@ -248,7 +248,7 @@ public class GameFlow implements Initializable {
     public void endGameEvent() throws IOException {
         exit(0);
     }
-    
+
 
     public Coordinates pressTurnCoor(double x, double y) {
 
