@@ -115,7 +115,7 @@ public class GameFlow implements Initializable {
                 Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
                 this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
 
-                this.no_more_moves = 0;
+
                 switch (turn) {
                     case X:
                         this.player1.add_disc(d);
@@ -127,20 +127,32 @@ public class GameFlow implements Initializable {
                 }
 
                 this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
-
-                this.playing_board.draw(player1.getColor(),player2.getColor());
+                this.playing_board.draw(player1.getColor(), player2.getColor());
 
                 if (isGameOver()) {
                     winMassege();
                 }
                 switchTurn(false);
+
+
+                // checks the next move a player can make
+              ArrayList<Coordinates>  possible_moves1 = this.boardlogic.valid_moves();
+                if (possible_moves1.isEmpty()) {
+                    this.no_more_moves++;
+                    switchTurn(true);
+
+                    ArrayList<Coordinates>possible_moves2 = this.boardlogic.valid_moves();
+                    if (possible_moves2.isEmpty()) {
+                        this.no_more_moves++;
+                        if (isGameOver()) {
+                            winMassege();
+                        }
+                    } else {
+                        this.no_more_moves = 0;
+                    }
+                }
             }
-        } else {
-            switchTurn(true);
-            this.no_more_moves++;
-            if (isGameOver()) {
-                winMassege();
-            }
+
         }
 
     }

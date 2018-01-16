@@ -37,7 +37,6 @@ public class BoardLogic {
                 k = list.get(i).getLocationColumn();
                 check_direction(direction ,j ,k );
             }
-
         }
         check_double();
         return this.valid_points;
@@ -276,17 +275,20 @@ public class BoardLogic {
      * Checks and deletes double appearance of Coordinates of valid moves vector.
      */
     public void check_double() {
+
+        ArrayList<Coordinates> temp = new ArrayList<Coordinates>();
         for (int j = 0; j < this.valid_points.size(); ++j) {
 
             for (int k = 0; k < this.valid_points.size(); ++k) {
-                if (j != k) {
-                    if ((this.valid_points.get(j).getCoordinatesY() == this.valid_points.get(k).getCoordinatesY()) &&
-                            (this.valid_points.get(j).getCoordinatesX() == this.valid_points.get(k).getCoordinatesX())) {
-                        this.valid_points.remove(k);
+                if (k != j) {
+                    if ((this.getValidMoves().get(j).getCoordinatesY() != this.getValidMoves().get(k).getCoordinatesY()) ||
+                            (this.getValidMoves().get(j).getCoordinatesX() != this.getValidMoves().get(k).getCoordinatesX())) {
+                        temp.add(this.valid_points.get(j));
                     }
                 }
             }
         }
+        this.valid_points = temp;
     }
 
     /**
