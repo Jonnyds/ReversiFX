@@ -279,15 +279,15 @@ public class BoardLogic {
         for (int j = 0; j < this.valid_points.size(); ++j) {
 
             for (int k = 0; k < this.valid_points.size(); ++k) {
-
-                if ((this.valid_points.get(j).getCoordinatesY() == this.valid_points.get(k).getCoordinatesY()) &&
-                        (this.valid_points.get(j).getCoordinatesX() == this.valid_points.get(k).getCoordinatesX()) && (j != k)) {
-                    this.valid_points.remove(k);
+                if (j != k) {
+                    if ((this.valid_points.get(j).getCoordinatesY() == this.valid_points.get(k).getCoordinatesY()) &&
+                            (this.valid_points.get(j).getCoordinatesX() == this.valid_points.get(k).getCoordinatesX())) {
+                        this.valid_points.remove(k);
+                    }
                 }
             }
         }
     }
-
 
     /**
      * @return the a vector of valid moves the playre can make;

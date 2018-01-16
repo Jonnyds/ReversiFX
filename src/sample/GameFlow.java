@@ -29,8 +29,8 @@ import static sample.DiscSymbol.X;
 public class GameFlow implements Initializable {
 
     private Board playing_board; // The game's board object.
-    private Player black; // The black player (with symbol X).
-    private Player white; // The white player (with symbol O).
+    private Player player1; // The black player (with symbol X).
+    private Player player2; // The white player (with symbol O).
     private DiscSymbol turn; // Which player does the turn belong to.
     private int no_more_moves;
     private BoardLogic boardlogic;
@@ -48,30 +48,31 @@ public class GameFlow implements Initializable {
     public GameFlow(int n, Color c1, Color c2) {
 
         this.playing_board = new Board(n);
-        this.white = new Player(O, c2);
-        this.black = new Player(X, c1);
+        this.player2 = new Player(O, c2);
+        this.player1 = new Player(X, c1);
         this.turn = X;
         this.no_more_moves = 0;
-        this.boardlogic = new BoardLogic(this.playing_board, this.black, this.white);
+        this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
     }
 
-    public GameFlow(){}
+    public GameFlow() {
+    }
 
     /**
      * Initializes the board.
      */
     public void initGame() {
-        this.playing_board.init(this.white, this.black);
+        this.playing_board.init(this.player2, this.player1);
     }
 
     /**
      * A function that prints a winning message according to the game's results.
      */
     public void winMassege() {
-        if (this.white.get_disc_list().size() > this.black.get_disc_list().size()) {
+        if (this.player2.get_disc_list().size() > this.player1.get_disc_list().size()) {
             System.out.println("The white player is the winner");
         } else {
-            if (this.white.get_disc_list().size() < this.black.get_disc_list().size()) {
+            if (this.player2.get_disc_list().size() < this.player1.get_disc_list().size()) {
                 System.out.println("The black player is the winner");
             } else {
                 System.out.println("It's a tie");
@@ -84,7 +85,7 @@ public class GameFlow implements Initializable {
      */
     public boolean isGameOver() {
 
-        int total_disc = this.white.get_disc_list().size() + black.get_disc_list().size();
+        int total_disc = this.player2.get_disc_list().size() + this.player1.get_disc_list().size();
         if (total_disc != pow(boardlogic.getBoard().get_size() - 1, 2) && (no_more_moves != 2)) {
             return false;
         }
@@ -94,20 +95,52 @@ public class GameFlow implements Initializable {
     /**
      * Manages a game after the players and board are created.
      */
-    public void play() {
+    public void play(double x, double y) {
 
-        Disc d;
+        ArrayList<Coordinates> possible_moves = boardlogic.valid_moves();
+        if (!possible_moves.isEmpty()) {
+            Coordinates coor = pressTurnCoor(x, y);
+            if (checkMove(possible_moves, coor)) {
+                Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
+                this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
 
+                switch (turn) {
+                    case X:
+                        this.player1.add_disc(d);
+                        break;
+                    case O:
+                        this.player2.add_disc(d);
+                        break;
+
+                }
+                this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
+                this.playing_board.draw();
+                if (isGameOver()) {
+                    winMassege();
+                }
+                switchTurn(false);
+            }
+        } else {
+            switchTurn(true);
+            this.no_more_moves++;
+            if (isGameOver()) {
+                winMassege();
+            }
+        }
+
+
+/*
         System.out.println("It's the black player's turn \n");
 
         int x = 0, y = 0;
         Coordinates chose = new Coordinates(x, y);
         int total_disc = this.white.get_disc_list().size() + this.black.get_disc_list().size();
-        ArrayList<Coordinates> possible_moves;
+
 
         while (!isGameOver()) {
             this.playing_board.draw();
             this.playing_board.print();
+
 
             System.out.println("The white player has: " + this.white.get_disc_list().size() + " discs on board");
             System.out.println("The black player has: " + this.black.get_disc_list().size() + " discs on board \n");
@@ -145,6 +178,7 @@ public class GameFlow implements Initializable {
             }
         }
         this.winMassege();
+        */
     }
 
     /**
@@ -229,6 +263,9 @@ public class GameFlow implements Initializable {
         g.getPlaying_board().setPrefHeight(400);
         g.initGame();
         root.getChildren().add(0, g.getPlaying_board());
+        g.getPlaying_board().setOnMouseClicked(event -> {
+            g.play(event.getX(), event.getY());
+        });
         g.getPlaying_board().draw();
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
@@ -241,7 +278,6 @@ public class GameFlow implements Initializable {
             g.getPlaying_board().draw();
         });
 
-        //g.play();
         //this.VBOX.getChildren().get(2).setOnMouseClicked(event -> {endGameEvent();});
         // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});
     }
@@ -271,6 +307,29 @@ public class GameFlow implements Initializable {
 
         return Color.BLACK;
     }
+
+    public Coordinates pressTurnCoor(double x, double y) {
+
+        int height = (int) this.playing_board.getPrefHeight();
+        int width = (int) this.playing_board.getPrefWidth();
+        double cellHeight = (double) (y / height) * playing_board.get_size();
+        double cellWidth = (double) (x / width) * playing_board.get_size();
+        return new Coordinates((int) cellHeight + 1, (int) cellWidth + 1);
+    }
+
+    public Boolean checkMove(ArrayList<Coordinates> possible, Coordinates c) {
+        Boolean contain = false;
+        for (int i = 0; i < possible.size(); i++) {
+            if ((possible.get(i).getCoordinatesY() == c.getCoordinatesY()) &&
+                    (possible.get(i).getCoordinatesX() == c.getCoordinatesX())) {
+                contain = true;
+                break;
+            }
+        }
+
+        return contain;
+    }
+
 }
 
 
