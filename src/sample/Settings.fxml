@@ -28,11 +28,11 @@
             />
             <Label text="Player 1 Color:"
                    GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <ChoiceBox fx:id="player1color"
+            <ColorPicker fx:id="player1color"
                            GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             <Label text="Player 2 Color:"
                    GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <ChoiceBox fx:id="player2color"
+            <ColorPicker fx:id="player2color"
                        GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             <Label text="Board Size:"
                     GridPane.rowIndex="4" GridPane.columnIndex="0"/>
