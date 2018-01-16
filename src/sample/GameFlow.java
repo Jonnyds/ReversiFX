@@ -10,8 +10,8 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -38,7 +38,10 @@ public class GameFlow implements Initializable {
     @FXML
     private HBox root;
     @FXML
-    private VBox VBOX;
+    private Text score1;
+    @FXML
+    private Text score2;
+
 
     /**
      * The gameflow object constructor.
@@ -122,8 +125,11 @@ public class GameFlow implements Initializable {
                         break;
 
                 }
+
                 this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
+
                 this.playing_board.draw(player1.getColor(),player2.getColor());
+
                 if (isGameOver()) {
                     winMassege();
                 }
@@ -223,8 +229,9 @@ public class GameFlow implements Initializable {
         root.getChildren().add(0, g.getPlaying_board());
         g.getPlaying_board().setOnMouseClicked(event -> {
             g.play(event.getX(), event.getY());
+            this.score1.setText(Integer.toString(g.player1.get_disc_list().size()));
+            this.score2.setText(Integer.toString(g.player2.get_disc_list().size()));
         });
-
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 120;
