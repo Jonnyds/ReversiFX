@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -129,35 +131,54 @@ public class Board extends GridPane{
         for (int i = 1; i < this.size; i++) {
             for (int j = 1; j < this.size; j++) {
 
-                Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.LAVENDER);
+                Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.AZURE);
                 boardRec.setStroke(Color.BLACK);
                 boardRec.setStrokeType(StrokeType.INSIDE);
+                Light.Point rec = new Light.Point();
+                rec.setX(80);
+                rec.setY(80);
+                rec.setZ(400);
+
+                Lighting l = new Lighting();
+                l.setLight(rec);
+                l.setSurfaceScale(3.0);
+                boardRec.setEffect(l);
 
                 if (board[i][j].get_sym() == X) {
-                    Circle c = new Circle(cellHeight / 3);
-                    c.setCenterX(cellWidth / 2);
-                    c.setCenterY(cellHeight / 2);
-                    c.setFill(c1);
-                    c.setStroke(c1);
+                    Circle c = new Circle(cellHeight / 3, c1);
                     c.setStroke(Color.TRANSPARENT);
                     c.setStrokeType(StrokeType.OUTSIDE);
                     c.setStrokeWidth(cellHeight/6);
+                    Light.Point cx = new Light.Point();
+                    cx.setX(80);
+                    cx.setY(80);
+                    cx.setZ(150);
+
+                    Lighting lightingX = new Lighting();
+                    lightingX.setLight(cx);
+                    lightingX.setSurfaceScale(6.0);
+                    c.setEffect(lightingX);
                     this.add(boardRec,j,i);
-                    this.add(c, j, i);
+                   this.add(c, j, i);
                     continue;
                 }
 
                 if (board[i][j].get_sym() == O) {
-                    Circle c = new Circle(cellHeight / 3);
-                    c.setCenterX(cellWidth / 2);
-                    c.setCenterY(cellHeight / 2);
-                    c.setFill(c2);
-                    c.setStroke(c2);
-                    c.setStroke(Color.TRANSPARENT);
-                    c.setStrokeType(StrokeType.OUTSIDE);
-                    c.setStrokeWidth(cellHeight/6);
+                    Circle cc = new Circle(cellHeight / 3, c2);
+                    cc.setStroke(Color.TRANSPARENT);
+                    cc.setStrokeType(StrokeType.OUTSIDE);
+                    cc.setStrokeWidth(cellHeight/6);
+                    Light.Point cx = new Light.Point();
+                    cx.setX(80);
+                    cx.setY(80);
+                    cx.setZ(150);
+
+                    Lighting lightingX = new Lighting();
+                    lightingX.setLight(cx);
+                    lightingX.setSurfaceScale(6.0);
+                    cc.setEffect(lightingX);
                     this.add(boardRec,j,i);
-                    this.add(c, j, i);
+                    this.add(cc, j, i);
                     continue;
                 }
                 this.add(boardRec,j,i);
