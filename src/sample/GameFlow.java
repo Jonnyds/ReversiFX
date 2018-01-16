@@ -104,6 +104,7 @@ public class GameFlow implements Initializable {
                 Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
                 this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
 
+                this.no_more_moves = 0;
                 switch (turn) {
                     case X:
                         this.player1.add_disc(d);
