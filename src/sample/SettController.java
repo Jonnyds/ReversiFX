@@ -34,7 +34,7 @@ public class SettController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        openPlayer.setItems(FXCollections.observableArrayList("Player 1", "Player 2 "));
+        openPlayer.setItems(FXCollections.observableArrayList("Player 1", "Player 2"));
         openPlayer.getSelectionModel().selectFirst();
         player1color.setItems(FXCollections.observableArrayList("Black","White", "Blue", "Yellow", "Pink",
                 "Purple", "Cyan"));

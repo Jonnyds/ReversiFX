@@ -116,7 +116,7 @@ public class Board extends GridPane{
         return this.board;
     }
 
-    public void draw() {
+    public void draw(Color c1, Color c2) {
 
         //size of the board
         int height = (int) this.getPrefHeight();
@@ -137,8 +137,8 @@ public class Board extends GridPane{
                     Circle c = new Circle(cellHeight / 3);
                     c.setCenterX(cellWidth / 2);
                     c.setCenterY(cellHeight / 2);
-                    c.setFill(Color.BLACK);
-                    c.setStroke(Color.BLACK);
+                    c.setFill(c1);
+                    c.setStroke(c1);
                     c.setStroke(Color.TRANSPARENT);
                     c.setStrokeType(StrokeType.OUTSIDE);
                     c.setStrokeWidth(cellHeight/6);
@@ -151,8 +151,8 @@ public class Board extends GridPane{
                     Circle c = new Circle(cellHeight / 3);
                     c.setCenterX(cellWidth / 2);
                     c.setCenterY(cellHeight / 2);
-                    c.setFill(Color.WHITE);
-                    c.setStroke(Color.WHITE);
+                    c.setFill(c2);
+                    c.setStroke(c2);
                     c.setStroke(Color.TRANSPARENT);
                     c.setStrokeType(StrokeType.OUTSIDE);
                     c.setStrokeWidth(cellHeight/6);

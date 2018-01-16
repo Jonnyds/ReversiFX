@@ -45,15 +45,23 @@ public class GameFlow implements Initializable {
      *
      * @param n the board's size.
      */
-    public GameFlow(int n, Color c1, Color c2) {
+    public GameFlow(int n, Color c1, Color c2, String opening) {
 
         this.playing_board = new Board(n);
         this.player2 = new Player(O, c2);
         this.player1 = new Player(X, c1);
-        this.turn = X;
+        if (opening.compareTo("Player 1") == 0) {
+            this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
+            this.turn = X;
+        } if (opening.compareTo("Player 2") == 0) {
+            this.boardlogic = new BoardLogic(this.playing_board, this.player2, this.player1);
+            this.turn = O;
+        }
         this.no_more_moves = 0;
-        this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
+
     }
+
+
 
     public GameFlow() {
     }
@@ -115,7 +123,7 @@ public class GameFlow implements Initializable {
 
                 }
                 this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
-                this.playing_board.draw();
+                this.playing_board.draw(player1.getColor(),player2.getColor());
                 if (isGameOver()) {
                     winMassege();
                 }
@@ -129,57 +137,6 @@ public class GameFlow implements Initializable {
             }
         }
 
-
-/*
-        System.out.println("It's the black player's turn \n");
-
-        int x = 0, y = 0;
-        Coordinates chose = new Coordinates(x, y);
-        int total_disc = this.white.get_disc_list().size() + this.black.get_disc_list().size();
-
-
-        while (!isGameOver()) {
-            this.playing_board.draw();
-            this.playing_board.print();
-
-
-            System.out.println("The white player has: " + this.white.get_disc_list().size() + " discs on board");
-            System.out.println("The black player has: " + this.black.get_disc_list().size() + " discs on board \n");
-
-            possible_moves = boardlogic.valid_moves(); // checks the valid moves.
-
-            if (possible_moves.isEmpty()) { // check if both players have no more moves then the game ends.
-
-                this.no_more_moves++;
-                switchTurn(true);
-            } else {
-                this.no_more_moves = 0;
-
-
-                switch (turn) {
-                    case X:
-                        chose = this.black.makeMove(boardlogic);
-                        d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
-                        this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
-                        this.black.add_disc(d);
-                        break;
-                    case O:
-                        chose = this.white.makeMove(boardlogic);
-                        d = new Disc(this.turn, chose.getCoordinatesX(), chose.getCoordinatesY());
-                        this.playing_board.add_to_board(d, chose.getCoordinatesX(), chose.getCoordinatesY());
-                        this.white.add_disc(d);
-                        break;
-                    case E:
-                        break;
-                }
-
-                this.boardlogic.flipping(chose.getCoordinatesX(), chose.getCoordinatesY()); //makes the move (changes discs on board).
-
-                switchTurn(false);
-            }
-        }
-        this.winMassege();
-        */
     }
 
     /**
@@ -259,7 +216,7 @@ public class GameFlow implements Initializable {
             e.printStackTrace();
         }
 
-        GameFlow g = new GameFlow(size_n, color1, color2);
+        GameFlow g = new GameFlow(size_n, color1, color2, open);
         g.getPlaying_board().setPrefWidth(400);
         g.getPlaying_board().setPrefHeight(400);
         g.initGame();
@@ -267,18 +224,16 @@ public class GameFlow implements Initializable {
         g.getPlaying_board().setOnMouseClicked(event -> {
             g.play(event.getX(), event.getY());
         });
-        g.getPlaying_board().draw();
+
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 120;
             g.getPlaying_board().setPrefWidth(boardNewWidth);
-            g.getPlaying_board().draw();
         });
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             g.getPlaying_board().setPrefHeight(newValue.doubleValue());
-            g.getPlaying_board().draw();
         });
-
+        g.getPlaying_board().draw(color1,color2);
         //this.VBOX.getChildren().get(2).setOnMouseClicked(event -> {endGameEvent();});
         // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});
     }

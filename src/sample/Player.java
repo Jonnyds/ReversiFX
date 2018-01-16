@@ -17,7 +17,7 @@ public class Player {
     private DiscSymbol symbol; //The player's symbol.
     private ArrayList<Disc> dlist; //The player's disc list.
     private int counter; //The number of discs the player has of board.
-    Color color;
+    private Color color;
 
     /**
      * A player's constructor.
@@ -101,4 +101,7 @@ public class Player {
     public DiscSymbol get_symbol() {
         return this.symbol;
     }
+
+    public Color getColor(){ return this.color; }
+
 }
