@@ -58,7 +58,7 @@ public class Menu implements Initializable {
     public void movetosettings(MouseEvent mouseEvent) throws IOException {
         GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
-        Scene s = new Scene(root, 520,400);
+        Scene s = new Scene(root, 520,450);
         stage.setScene(s);
         stage.show();
     }
