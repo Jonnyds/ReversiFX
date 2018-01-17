@@ -13,16 +13,19 @@
                 <GridPane fx:id="GRID"  hgap="20" vgap="5">
                         <children>
                                 <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Current Player: "/>
-                                <Label fx:id="currentplayer" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                <Text fx:id="currentplayer" GridPane.columnIndex="1" GridPane.rowIndex="0"
                                        text="1"/>
                                 <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Player 1 Score: "/>
                                 <Text fx:id="score1" GridPane.columnIndex="1" GridPane.rowIndex="1" text="2"/>
                                 <Label  GridPane.columnIndex="0" GridPane.rowIndex="2"
                                        text="Player 2 Score: "/>
                                 <Text fx:id="score2" GridPane.columnIndex="1" GridPane.rowIndex="2" text="2"/>
-                                <Button GridPane.columnIndex="0" GridPane.rowIndex="5"
+                                <Text fx:id="nomoremoves" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                                      text=""/>
+                                <Button GridPane.columnIndex="0" GridPane.rowIndex="6"
                                         id="endGameButton" text="End Game" onMouseClicked="#endGameEvent"
                                 >End Game</Button>
+
                         </children>
                 </GridPane>
         </children>

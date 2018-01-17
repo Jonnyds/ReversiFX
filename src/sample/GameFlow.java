@@ -4,13 +4,15 @@
  * Name: Jonathan Schwarz
  * ID: 203672910
  */
-
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,8 +22,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -34,7 +36,6 @@ import static java.lang.System.exit;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
 
-
 public class GameFlow implements Initializable {
 
     private Board playing_board; // The game's board object.
@@ -43,6 +44,7 @@ public class GameFlow implements Initializable {
     private DiscSymbol turn; // Which player does the turn belong to.
     private int no_more_moves;
     private BoardLogic boardlogic;
+    private GameFlow  controller;
 
     @FXML
     private HBox root;
@@ -50,23 +52,28 @@ public class GameFlow implements Initializable {
     private Text score1;
     @FXML
     private Text score2;
-
+    @FXML
+    private Text nomoremoves;
+    @FXML
+    private Text currentplayer;
 
     /**
      * The gameflow object constructor.
      *
      * @param n the board's size.
      */
-    public GameFlow(int n, Color c1, Color c2, String opening) {
-
+    public GameFlow(int n, Color c1, Color c2, String opening, GameFlow control) {
+        this.controller = control;
         this.playing_board = new Board(n);
         this.player2 = new Player(O, c2);
         this.player1 = new Player(X, c1);
         if (opening.compareTo("Player 1") == 0) {
             this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
+            this.controller.currentplayer.setText("1");
             this.turn = X;
         } if (opening.compareTo("Player 2") == 0) {
             this.boardlogic = new BoardLogic(this.playing_board, this.player2, this.player1);
+            this.controller.currentplayer.setText("");
             this.turn = O;
         }
         this.no_more_moves = 0;
@@ -84,6 +91,7 @@ public class GameFlow implements Initializable {
     public void initGame() {
         this.playing_board.init(this.player2, this.player1);
     }
+
 
     /**
      * A function that prints a winning message according to the game's results.
@@ -117,9 +125,23 @@ public class GameFlow implements Initializable {
         seconderyStage.setTitle("Game Over");
         seconderyStage.setScene(scene);
         Button endBack = new Button("Back to Menu");
-        Stage stage = (Stage) this.root.getScene().getWindow();
-     //   HBox root = (HBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        endBack.setOnMouseClicked(mouseEvent -> FXMLLoader.load(getClass().getResource("Menu.fxml")));
+        scene.setRoot(hBox);
+        hBox.getChildren().add(endBack);
+        endBack.setAlignment(Pos.BOTTOM_CENTER);
+
+        endBack.setOnMouseClicked(mouseEvent -> {
+            try {
+           Stage stage = (Stage) this.controller.root.getScene().getWindow();
+                VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                Scene s = new Scene(root, 520,400);
+                stage.setScene(s);
+                stage.show();
+                seconderyStage.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
 
         seconderyStage.show();
@@ -140,51 +162,51 @@ public class GameFlow implements Initializable {
     /**
      * Manages a game after the players and board are created.
      */
-    public void play(double x, double y) {
+    public void play(double x, double y) throws IOException {
 
         ArrayList<Coordinates> possible_moves = boardlogic.valid_moves();
-            Coordinates coor = pressTurnCoor(x, y);
-            if (checkMove(possible_moves, coor)) {
-                Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
-                this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
+        Coordinates coor = pressTurnCoor(x, y);
+        if (checkMove(possible_moves, coor)) {
+            Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
+            this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
 
 
-                switch (turn) {
-                    case X:
-                        this.player1.add_disc(d);
-                        break;
-                    case O:
-                        this.player2.add_disc(d);
-                        break;
+            switch (turn) {
+                case X:
+                    this.player1.add_disc(d);
+                    break;
+                case O:
+                    this.player2.add_disc(d);
+                    break;
 
-                }
+            }
 
-                this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
-                this.playing_board.draw(player1.getColor(), player2.getColor());
+            this.boardlogic.flipping(coor.getCoordinatesX(), coor.getCoordinatesY());//makes the move (changes discs on board).
+            this.playing_board.draw(player1.getColor(), player2.getColor());
 
-                if (isGameOver()) {
-                    winMassege();
-                }
-                switchTurn(false);
+            if (isGameOver()) {
+                winMassege();
+            }
+            switchTurn(false);
 
 
-                // checks the next move a player can make
-              ArrayList<Coordinates>  possible_moves1 = this.boardlogic.valid_moves();
-                if (possible_moves1.isEmpty()) {
+            // checks the next 2 moves a player can make
+            ArrayList<Coordinates>  possible_moves1 = this.boardlogic.valid_moves();
+            if (possible_moves1.isEmpty()) {
+                this.no_more_moves++;
+                switchTurn(true);
+
+                ArrayList<Coordinates>possible_moves2 = this.boardlogic.valid_moves();
+                if (possible_moves2.isEmpty()) {
                     this.no_more_moves++;
-                    switchTurn(true);
-
-                    ArrayList<Coordinates>possible_moves2 = this.boardlogic.valid_moves();
-                    if (possible_moves2.isEmpty()) {
-                        this.no_more_moves++;
-                        if (isGameOver()) {
-                            winMassege();
-                        }
-                    } else {
-                        this.no_more_moves = 0;
+                    if (isGameOver()) {
+                        winMassege();
                     }
+                } else {
+                    this.no_more_moves = 0;
                 }
             }
+        }
     }
 
     /**
@@ -196,7 +218,12 @@ public class GameFlow implements Initializable {
     public void switchTurn(boolean no_moves) {
         // switch turn.
         if (no_moves) {
-            System.out.println("No possible moves - switching turn");
+            controller.nomoremoves.setText("no moves switching turn");
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(1500),
+                    ae -> controller.nomoremoves.setText("")));
+            timeline.play();
+
         }
         switch (this.turn) {
             case X:
@@ -204,14 +231,13 @@ public class GameFlow implements Initializable {
                 this.boardlogic.clearVec();
                 this.turn = O;
                 System.out.println("It's the white player's turn \n");
+                this.controller.currentplayer.setText("1");
                 break;
             case O:
                 this.boardlogic.swapPlayers();
                 this.boardlogic.clearVec();
                 this.turn = X;
-                if (no_moves) {
-
-                }
+                this.controller.currentplayer.setText("2");
                 System.out.println("It's the black player's turn \n");
                 break;
             case E:
@@ -264,15 +290,20 @@ public class GameFlow implements Initializable {
             e.printStackTrace();
         }
 
-        GameFlow g = new GameFlow(size_n, color1, color2, open);
+        GameFlow g = new GameFlow(size_n, color1, color2, open, this);
         g.getPlaying_board().setPrefWidth(400);
         g.getPlaying_board().setPrefHeight(400);
         g.initGame();
         root.getChildren().add(0, g.getPlaying_board());
         g.getPlaying_board().setOnMouseClicked(event -> {
-            g.play(event.getX(), event.getY());
+            try {
+                g.play(event.getX(), event.getY());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             this.score1.setText(Integer.toString(g.player1.get_disc_list().size()));
             this.score2.setText(Integer.toString(g.player2.get_disc_list().size()));
+
         });
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
@@ -313,4 +344,5 @@ public class GameFlow implements Initializable {
 
         return contain;
     }
+
 }
