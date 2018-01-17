@@ -54,6 +54,10 @@ public class GameFlow implements Initializable {
     @FXML
     private Text score2;
     @FXML
+    private Text nameplayer1;
+    @FXML
+    private Text nameplayer2;
+    @FXML
     private Text nomoremoves;
     @FXML
     private Text currentplayer;
@@ -68,15 +72,15 @@ public class GameFlow implements Initializable {
         this.playing_board = new Board(n);
         this.player2 = new Player(O, c2);
         this.player1 = new Player(X, c1);
-        this.nameP1 = "Player 1";
-        this.nameP2 = "Player 2";
+        this.nameP1 = control.nameP1;
+        this.nameP2 = control.nameP2;
         if (opening.compareTo("Player 1") == 0) {
             this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
-            this.controller.currentplayer.setText("1");
+            this.controller.currentplayer.setText(this.nameP1);
             this.turn = X;
         } if (opening.compareTo("Player 2") == 0) {
             this.boardlogic = new BoardLogic(this.playing_board, this.player2, this.player1);
-            this.controller.currentplayer.setText("");
+            this.controller.currentplayer.setText(this.nameP2);
             this.turn = O;
         }
         this.no_more_moves = 0;
@@ -167,8 +171,9 @@ public class GameFlow implements Initializable {
      */
     public void play(double x, double y) throws IOException {
 
+        this.boardlogic.clearVec();
         ArrayList<Coordinates> possible_moves = boardlogic.valid_moves();
-        boardlogic.clearVec();
+
         Coordinates coor = pressTurnCoor(x, y);
 
         if (checkMove(possible_moves, coor)) {
@@ -201,10 +206,11 @@ public class GameFlow implements Initializable {
             if (possible_moves1.isEmpty()) {
                 this.no_more_moves++;
                 switchTurn(true);
-
+                this.boardlogic.clearVec();;
                 ArrayList<Coordinates>possible_moves2 = boardlogic.valid_moves();
                 if (possible_moves2.isEmpty()) {
                     this.no_more_moves++;
+                    this.boardlogic.clearVec();
                     if (isGameOver()) {
                         winMassege();
                     }
@@ -237,13 +243,13 @@ public class GameFlow implements Initializable {
                 this.boardlogic.clearVec();
                 this.turn = O;
                 System.out.println("It's the white player's turn \n");
-                this.controller.currentplayer.setText("1");
+                this.controller.currentplayer.setText(this.nameP1);
                 break;
             case O:
                 this.boardlogic.swapPlayers();
                 this.boardlogic.clearVec();
                 this.turn = X;
-                this.controller.currentplayer.setText("2");
+                this.controller.currentplayer.setText(this.nameP2);
                 System.out.println("It's the black player's turn \n");
                 break;
             case E:
@@ -277,10 +283,10 @@ public class GameFlow implements Initializable {
                 String set = parts[0];
                 switch (set) {
                     case "player1_name":
-                        nameP1 = parts[1];
+                        this.nameP1 = parts[1];
                         break;
                     case "player2_name":
-                        nameP2 = parts[1];
+                        this.nameP2 = parts[1];
                         break;
                     case "opening_player":
                         open = parts[1];
@@ -309,6 +315,8 @@ public class GameFlow implements Initializable {
         root.getChildren().add(0, g.getPlaying_board());
         root.getChildren().get(0).setTranslateX(20);
         root.getChildren().get(0).setTranslateY(20);
+        this.nameplayer1.setText(nameP1 + "'s score is:");
+        this.nameplayer2.setText(nameP2 + "'s score is:");
         g.getPlaying_board().setOnMouseClicked(event -> {
             try {
                 g.play(event.getX(), event.getY());
@@ -317,11 +325,10 @@ public class GameFlow implements Initializable {
             }
             this.score1.setText(Integer.toString(g.player1.get_disc_list().size()));
             this.score2.setText(Integer.toString(g.player2.get_disc_list().size()));
-
         });
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
-            double boardNewWidth = newValue.doubleValue() - 150;
+            double boardNewWidth = newValue.doubleValue() - 220;
             g.getPlaying_board().setPrefWidth(boardNewWidth);
         });
         root.heightProperty().addListener((observable, oldValue, newValue) -> {

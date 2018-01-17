@@ -1,6 +1,6 @@
-player1_name:Player 1
-player2_name:Player 2
+player1_name:jon
+player2_name:nom
 opening_player:Player 1
 player_1_color:0x000000ff
 player_2_color:0xffffffff
-board_size:6
+board_size:4

@@ -23,11 +23,11 @@
             </Text>
             <Label text="Player's 1 Name:"
                    GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="name1"
+            <TextField fx:id="name1" text="player 1"
                        GridPane.rowIndex="1" GridPane.columnIndex="1"/>
             <Label text="Player's 2 Name:"
                     GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="name2"
+            <TextField fx:id="name2" text="player 2"
                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             <Label text="Opening Player:"
                    GridPane.rowIndex="3" GridPane.columnIndex="0"/>
