@@ -307,6 +307,8 @@ public class GameFlow implements Initializable {
         g.getPlaying_board().setPrefHeight(400);
         g.initGame();
         root.getChildren().add(0, g.getPlaying_board());
+        root.getChildren().get(0).setTranslateX(20);
+        root.getChildren().get(0).setTranslateY(20);
         g.getPlaying_board().setOnMouseClicked(event -> {
             try {
                 g.play(event.getX(), event.getY());
@@ -319,7 +321,7 @@ public class GameFlow implements Initializable {
         });
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
-            double boardNewWidth = newValue.doubleValue() - 120;
+            double boardNewWidth = newValue.doubleValue() - 150;
             g.getPlaying_board().setPrefWidth(boardNewWidth);
         });
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
