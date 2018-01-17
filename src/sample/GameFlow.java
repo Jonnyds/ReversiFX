@@ -316,6 +316,7 @@ public class GameFlow implements Initializable {
         GameFlow g = new GameFlow(size_n, color1, color2, open, this);
         g.getPlaying_board().setPrefWidth(400);
         g.getPlaying_board().setPrefHeight(400);
+        g.getPlaying_board().setId("boardy");
         g.initGame();
         root.getChildren().add(0, g.getPlaying_board());
         root.getChildren().get(0).setTranslateX(20);
