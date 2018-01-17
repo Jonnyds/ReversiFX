@@ -8,11 +8,20 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -79,16 +88,41 @@ public class GameFlow implements Initializable {
     /**
      * A function that prints a winning message according to the game's results.
      */
-    public void winMassege() {
+    public void winMassege() throws IOException {
+
+        Label endPlayerLabel = new Label();
+        HBox hBox = new HBox();
+        hBox.setSpacing(5);
+        endPlayerLabel.setFont(Font.font("Broadway", FontWeight.BOLD, 30));
+        endPlayerLabel.setTextFill(Color.BLACK);
+
         if (this.player2.get_disc_list().size() > this.player1.get_disc_list().size()) {
+            endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t Player 2");
             System.out.println("The white player is the winner");
         } else {
             if (this.player2.get_disc_list().size() < this.player1.get_disc_list().size()) {
+                endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t Player 1");
                 System.out.println("The black player is the winner");
             } else {
+                endPlayerLabel.setText("\n\t  Game over!\n\n   It's A TIE");
                 System.out.println("It's a tie");
             }
         }
+
+        hBox.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
+        hBox.getChildren().addAll(endPlayerLabel);
+
+        Scene scene = new Scene(hBox, 400, 250);
+        Stage seconderyStage = new Stage();
+        seconderyStage.setTitle("Game Over");
+        seconderyStage.setScene(scene);
+        Button endBack = new Button("Back to Menu");
+        Stage stage = (Stage) this.root.getScene().getWindow();
+     //   HBox root = (HBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        endBack.setOnMouseClicked(mouseEvent -> FXMLLoader.load(getClass().getResource("Menu.fxml")));
+
+
+        seconderyStage.show();
     }
 
     /**
@@ -280,7 +314,4 @@ public class GameFlow implements Initializable {
 
         return contain;
     }
-
 }
-
-
