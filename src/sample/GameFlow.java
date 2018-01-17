@@ -112,11 +112,11 @@ public class GameFlow implements Initializable {
         endPlayerLabel.setTextFill(Color.BLACK);
 
         if (this.player2.get_disc_list().size() > this.player1.get_disc_list().size()) {
-            endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t Player 2");
+            endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t" + this.nameP2);
             System.out.println("The white player is the winner");
         } else {
             if (this.player2.get_disc_list().size() < this.player1.get_disc_list().size()) {
-                endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t Player 1");
+                endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t" + this.nameP1);
                 System.out.println("The black player is the winner");
             } else {
                 endPlayerLabel.setText("\n\t  Game over!\n\n   It's A TIE");
@@ -140,7 +140,7 @@ public class GameFlow implements Initializable {
             try {
            Stage stage = (Stage) this.controller.root.getScene().getWindow();
                 VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
-                Scene s = new Scene(root, 520,400);
+                Scene s = new Scene(root, 600,400);
                 stage.setScene(s);
                 stage.show();
                 seconderyStage.close();
@@ -206,11 +206,10 @@ public class GameFlow implements Initializable {
             if (possible_moves1.isEmpty()) {
                 this.no_more_moves++;
                 switchTurn(true);
-                this.boardlogic.clearVec();;
+
                 ArrayList<Coordinates>possible_moves2 = boardlogic.valid_moves();
                 if (possible_moves2.isEmpty()) {
                     this.no_more_moves++;
-                    this.boardlogic.clearVec();
                     if (isGameOver()) {
                         winMassege();
                     }

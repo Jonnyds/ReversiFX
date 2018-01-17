@@ -38,7 +38,7 @@ public class BoardLogic {
                 check_direction(direction ,j ,k );
             }
         }
-        check_double();
+      //  check_double();
         return this.valid_points;
     }
 
@@ -91,13 +91,15 @@ public class BoardLogic {
                     j--;
                     k++;
                     break;
-                case 4: j--;
+                case 4:
+                    j--;
                     break;
                 case 5:
                     j--;
                     k--;
                     break;
-                case 6: k--;
+                case 6:
+                    k--;
                     break;
                 case 7:
                     j++;
