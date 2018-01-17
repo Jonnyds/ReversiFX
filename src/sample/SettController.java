@@ -24,6 +24,10 @@ public class SettController implements Initializable {
     @FXML
     private GridPane setty;
     @FXML
+    private TextField name1;
+    @FXML
+    private TextField name2;
+    @FXML
     private ChoiceBox openPlayer;
     @FXML
     private ColorPicker player1color;
@@ -43,6 +47,7 @@ public class SettController implements Initializable {
         colorPicker1.setValue(Color.BLACK);
         ColorPicker colorPicker2 = new ColorPicker();
         colorPicker2.setValue(Color.WHITE);
+
 
         openPlayer.setItems(FXCollections.observableArrayList("Player 1", "Player 2"));
         openPlayer.getSelectionModel().selectFirst();
@@ -72,16 +77,21 @@ public class SettController implements Initializable {
 
 
 
-        String open,color1,color2,size_b,size[];
+        String open, color1, color2, size_b, size[], nameP1, nameP2;
 
         open = openPlayer.getSelectionModel().getSelectedItem().toString();
         color1 = player1color.getValue().toString();
         color2 = player2color.getValue().toString();
         size_b = board_size.getSelectionModel().getSelectedItem().toString();
         size = size_b.split("x");
+        nameP1 = name1.getText();
+        nameP2 = name2.getText();
 
 
-
+        bufferedW.write("player1_name:" + nameP1);
+        bufferedW.newLine();
+        bufferedW.write("player2_name:" + nameP2);
+        bufferedW.newLine();
         bufferedW.write("opening_player:" + open);
         bufferedW.newLine();
         bufferedW.write("player_1_color:" + color1);

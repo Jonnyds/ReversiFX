@@ -39,7 +39,9 @@ public class GameFlow implements Initializable {
 
     private Board playing_board; // The game's board object.
     private Player player1; // The black player (with symbol X).
+    private String nameP1;
     private Player player2; // The white player (with symbol O).
+    private String nameP2;
     private DiscSymbol turn; // Which player does the turn belong to.
     private int no_more_moves;
     private BoardLogic boardlogic;
@@ -66,6 +68,8 @@ public class GameFlow implements Initializable {
         this.playing_board = new Board(n);
         this.player2 = new Player(O, c2);
         this.player1 = new Player(X, c1);
+        this.nameP1 = "Player 1";
+        this.nameP2 = "Player 2";
         if (opening.compareTo("Player 1") == 0) {
             this.boardlogic = new BoardLogic(this.playing_board, this.player1, this.player2);
             this.controller.currentplayer.setText("1");
@@ -272,6 +276,12 @@ public class GameFlow implements Initializable {
                 String parts[] = line.split(":");
                 String set = parts[0];
                 switch (set) {
+                    case "player1_name":
+                        nameP1 = parts[1];
+                        break;
+                    case "player2_name":
+                        nameP2 = parts[1];
+                        break;
                     case "opening_player":
                         open = parts[1];
                         break;

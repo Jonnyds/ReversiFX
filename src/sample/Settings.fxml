@@ -21,23 +21,31 @@
                 <Font size="40"  ></Font>
             </font>
             </Text>
-            <Label text="Opening Player:"
+            <Label text="Player's 1 Name:"
                    GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="name1"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Player's 2 Name:"
+                    GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="name2"
+               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Opening Player:"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <ChoiceBox fx:id="openPlayer"
-                       GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"
             />
             <Label text="Player 1 Color:"
-                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                   GridPane.rowIndex="4" GridPane.columnIndex="0"/>
             <ColorPicker fx:id="player1color"
-                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             <Label text="Player 2 Color:"
-                   GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                   GridPane.rowIndex="5" GridPane.columnIndex="0"/>
             <ColorPicker fx:id="player2color"
-                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                       GridPane.rowIndex="5" GridPane.columnIndex="1"/>
             <Label text="Board Size:"
-                    GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    GridPane.rowIndex="6" GridPane.columnIndex="0"/>
             <ChoiceBox fx:id="board_size"
-                    GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    GridPane.rowIndex="6" GridPane.columnIndex="1"/>
             <Button id="BackButton" text="Back to Menu" onMouseClicked="#backMenu"
-                    GridPane.rowIndex="5" GridPane.columnIndex="0">Back</Button>
+                    GridPane.rowIndex="7" GridPane.columnIndex="0">Back</Button>
 </GridPane>
