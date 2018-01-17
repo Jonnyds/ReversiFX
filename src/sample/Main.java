@@ -13,7 +13,7 @@ public class Main extends Application {
         {
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene scene = new Scene(root, 520, 400);
-            // scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
             primaryStage.setScene(scene);
             primaryStage.show();

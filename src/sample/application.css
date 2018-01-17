@@ -1,0 +1,21 @@
+.root {
+   -fx-background-image: url("imi.jpg")
+}
+
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-text-fill: deeppink;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+
+#welcome {
+    -fx-font-size:32px;
+    -fx-font-family: Arial;
+    -fx-alignment: baseline-center;
+    -fx-fill: rgb(85, 87, 83);
+}
