@@ -1,21 +1,24 @@
 .root {
-   -fx-background-image: url("imi.jpg")
+   -fx-background-image: url("imi.jpg");
 }
 
 .label {
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
 .button {
-    -fx-text-fill: deeppink;
+    -fx-text-fill: brown;
+    -fx-font-family: Purisa ;
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-alignment: center;
+    -fx-background-color: linear-gradient(cadetblue , darkgray,greenyellow);
 }
 
 #welcome {
     -fx-font-size:32px;
-    -fx-font-family: Arial;
+    -fx-font-family: Purisa;
+    -fx-font-weight: bold;
     -fx-alignment: baseline-center;
     -fx-fill: rgb(85, 87, 83);
 }
