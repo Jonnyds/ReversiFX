@@ -109,7 +109,6 @@ public class GameFlow implements Initializable {
     public void play(double x, double y) {
 
         ArrayList<Coordinates> possible_moves = boardlogic.valid_moves();
-        if (!possible_moves.isEmpty()) {
             Coordinates coor = pressTurnCoor(x, y);
             if (checkMove(possible_moves, coor)) {
                 Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
@@ -152,8 +151,6 @@ public class GameFlow implements Initializable {
                     }
                 }
             }
-
-        }
 
     }
 
