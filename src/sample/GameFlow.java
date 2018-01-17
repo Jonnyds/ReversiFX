@@ -106,17 +106,18 @@ public class GameFlow implements Initializable {
     public void winMassege() throws IOException {
 
         Label endPlayerLabel = new Label();
+        endPlayerLabel.setId("endPlayerLabel");
         HBox hBox = new HBox();
         hBox.setSpacing(5);
         endPlayerLabel.setFont(Font.font("Broadway", FontWeight.BOLD, 30));
         endPlayerLabel.setTextFill(Color.BLACK);
 
         if (this.player2.get_disc_list().size() > this.player1.get_disc_list().size()) {
-            endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t" + this.nameP2);
+            endPlayerLabel.setText("\n    Game over!\n\n   The Winner Is: \n\n\t" + this.nameP2);
             System.out.println("The white player is the winner");
         } else {
             if (this.player2.get_disc_list().size() < this.player1.get_disc_list().size()) {
-                endPlayerLabel.setText("\n\t  Game over!\n\n\n   The Winner Is: \n\n\t" + this.nameP1);
+                endPlayerLabel.setText("\n    Game over!\n\n   The Winner Is: \n\n\t" + this.nameP1);
                 System.out.println("The black player is the winner");
             } else {
                 endPlayerLabel.setText("\n\t  Game over!\n\n   It's A TIE");
@@ -128,19 +129,24 @@ public class GameFlow implements Initializable {
         hBox.getChildren().addAll(endPlayerLabel);
 
         Scene scene = new Scene(hBox, 400, 250);
+
         Stage seconderyStage = new Stage();
         seconderyStage.setTitle("Game Over");
         seconderyStage.setScene(scene);
         Button endBack = new Button("Back to Menu");
+        endBack.setId("endBack");
         scene.setRoot(hBox);
         hBox.getChildren().add(endBack);
         endBack.setAlignment(Pos.BOTTOM_CENTER);
+        scene.getStylesheets().add(getClass().getResource("Alert.css").toExternalForm());
 
         endBack.setOnMouseClicked(mouseEvent -> {
             try {
            Stage stage = (Stage) this.controller.root.getScene().getWindow();
                 VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
-                Scene s = new Scene(root, 600,400);
+
+                Scene s = new Scene(root, 520,400);
+                s.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 stage.setScene(s);
                 stage.show();
                 seconderyStage.close();
@@ -342,6 +348,7 @@ public class GameFlow implements Initializable {
         Stage stage = (Stage) this.root.getScene().getWindow();
         VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene s = new Scene(root, 520,400);
+        s.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(s);
         stage.show();
     }

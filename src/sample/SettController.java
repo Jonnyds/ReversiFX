@@ -113,6 +113,7 @@ public class SettController implements Initializable {
         Stage stage = (Stage) this.setty.getScene().getWindow();
         VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene s = new Scene(root, 520,400);
+        s.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(s);
         stage.show();
     }
