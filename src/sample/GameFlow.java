@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static java.lang.Math.pow;
-import static java.lang.System.exit;
 import static sample.DiscSymbol.O;
 import static sample.DiscSymbol.X;
 
@@ -165,7 +164,9 @@ public class GameFlow implements Initializable {
     public void play(double x, double y) throws IOException {
 
         ArrayList<Coordinates> possible_moves = boardlogic.valid_moves();
+        boardlogic.clearVec();
         Coordinates coor = pressTurnCoor(x, y);
+
         if (checkMove(possible_moves, coor)) {
             Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
             this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
@@ -187,16 +188,17 @@ public class GameFlow implements Initializable {
             if (isGameOver()) {
                 winMassege();
             }
+
             switchTurn(false);
 
 
             // checks the next 2 moves a player can make
-            ArrayList<Coordinates>  possible_moves1 = this.boardlogic.valid_moves();
+            ArrayList<Coordinates>  possible_moves1 = boardlogic.valid_moves();
             if (possible_moves1.isEmpty()) {
                 this.no_more_moves++;
                 switchTurn(true);
 
-                ArrayList<Coordinates>possible_moves2 = this.boardlogic.valid_moves();
+                ArrayList<Coordinates>possible_moves2 = boardlogic.valid_moves();
                 if (possible_moves2.isEmpty()) {
                     this.no_more_moves++;
                     if (isGameOver()) {
@@ -319,7 +321,11 @@ public class GameFlow implements Initializable {
     }
 
     public void endGameEvent() throws IOException {
-        exit(0);
+        Stage stage = (Stage) this.root.getScene().getWindow();
+        VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene s = new Scene(root, 520,400);
+        stage.setScene(s);
+        stage.show();
     }
 
 
