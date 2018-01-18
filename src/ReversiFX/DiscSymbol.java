@@ -5,7 +5,7 @@
  * ID: 315773465
  */
 
-package sample;
+package ReversiFX;
 
 /**
  * Enum object for placing the right symbols on the board.

@@ -5,7 +5,7 @@
  * ID: 315773465
  */
 
-package sample;
+package ReversiFX;
 
 
 public class Disc {

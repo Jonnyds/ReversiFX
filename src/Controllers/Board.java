@@ -1,5 +1,7 @@
-package sample;
+package Controllers;
 
+import ReversiFX.Disc;
+import ReversiFX.Player;
 import javafx.fxml.FXML;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
@@ -9,7 +11,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 
-import static sample.DiscSymbol.*;
+import static ReversiFX.DiscSymbol.*;
 
 /**
  * the board object (a Gridpane object).

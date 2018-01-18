@@ -1,4 +1,4 @@
-package sample;
+package Controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try
         {
-            VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            VBox root = (VBox) FXMLLoader.load(getClass().getResource("../Controllers/Menu.fxml"));
             Scene scene = new Scene(root, 520, 400);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi game");

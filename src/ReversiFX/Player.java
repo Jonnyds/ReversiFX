@@ -5,7 +5,7 @@
  * ID: 203672910
  */
 
-package sample;
+package ReversiFX;
 
 import javafx.scene.paint.Color;
 

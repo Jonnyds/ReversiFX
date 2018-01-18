@@ -9,7 +9,7 @@
 <?import javafx.scene.control.cell.ChoiceBoxListCell?>
 <?import javafx.scene.text.Font?>
 <GridPane fx:id="setty" xmlns="http://javafx.com/javafx/8.0.0"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettController" alignment="center"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SettController" alignment="center"
           hgap="10" vgap="25"> <padding><Insets top="25" right="25" bottom="10"
                                                 left="25"></Insets></padding>
     <Text text="SETTINGS" fx:id="set"

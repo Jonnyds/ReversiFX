@@ -5,7 +5,7 @@
  * ID: 203672910
  */
 
-package sample;
+package Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

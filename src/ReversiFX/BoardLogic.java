@@ -1,7 +1,9 @@
-package sample;
+package ReversiFX;
+
+import Controllers.Board;
 
 import java.util.ArrayList;
-import static sample.DiscSymbol.E;
+import static ReversiFX.DiscSymbol.E;
 
 public class BoardLogic {
 
@@ -332,7 +334,7 @@ public class BoardLogic {
     /**
      * Clears the valid_points vector for reuse.
      */
-    void clearVec() {
+    public void clearVec() {
         this.valid_points.clear();
     }
     

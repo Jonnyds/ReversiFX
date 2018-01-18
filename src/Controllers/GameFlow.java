@@ -4,8 +4,9 @@
  * Name: Jonathan Schwarz
  * ID: 203672910
  */
-package sample;
+package Controllers;
 
+import ReversiFX.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -32,8 +33,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static java.lang.Math.pow;
-import static sample.DiscSymbol.O;
-import static sample.DiscSymbol.X;
+import static ReversiFX.DiscSymbol.O;
+import static ReversiFX.DiscSymbol.X;
 
 public class GameFlow implements Initializable {
 
@@ -249,13 +250,13 @@ public class GameFlow implements Initializable {
                 this.boardlogic.swapPlayers();
                 this.boardlogic.clearVec();
                 this.turn = O;
-                this.controller.currentplayer.setText(this.nameP1);
+                this.controller.currentplayer.setText(this.nameP2);
                 break;
             case O:
                 this.boardlogic.swapPlayers();
                 this.boardlogic.clearVec();
                 this.turn = X;
-                this.controller.currentplayer.setText(this.nameP2);
+                this.controller.currentplayer.setText(this.nameP1);
                 break;
             case E:
                 break;

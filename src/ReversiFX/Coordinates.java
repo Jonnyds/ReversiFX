@@ -5,7 +5,7 @@
  * ID: 315773465
  */
 
-package sample;
+package ReversiFX;
 
 /**
  * a point object for placing a disc in the right location on the board
