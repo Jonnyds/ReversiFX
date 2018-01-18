@@ -6,15 +6,16 @@
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-alignment: center;
-    -fx-background-color: ;
     -fx-translate-x: 90;
     -fx-translate-y: 10;
 }
 
 #endBack {
-    -fx-text-fill: deeppink;
+    -fx-text-fill: brown;
+    -fx-font-family: Purisa ;
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-alignment: center;
+    -fx-background-color: linear-gradient(cadetblue , darkgray,greenyellow);
     -fx-translate-x: -50;
     -fx-translate-y: 200;
 }

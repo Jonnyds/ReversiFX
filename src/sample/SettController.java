@@ -37,9 +37,6 @@ public class SettController implements Initializable {
     private ChoiceBox board_size;
 
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -51,14 +48,10 @@ public class SettController implements Initializable {
 
         openPlayer.setItems(FXCollections.observableArrayList("Player 1", "Player 2"));
         openPlayer.getSelectionModel().selectFirst();
-      /*  player1color.setItems(FXCollections.observableArrayList("Black","White", "Blue", "Yellow", "Pink",
-                "Purple", "Cyan"));*/
 
         player1color.setValue(colorPicker1.getValue());
         player2color.setValue(colorPicker2.getValue());
-        /*player2color.setItems(FXCollections.observableArrayList("Black","White", "Blue", "Yellow", "Pink",
-                "Purple", "Cyan"));
-        player2color.getSelectionModel().select(1);*/
+
         board_size.setItems(FXCollections.observableArrayList("4x4", "6x6", "8x8", "10x10", "12x12", "14x14", "16x16",
                 "18x18", "20x20"));
         board_size.getSelectionModel().select(2);
@@ -66,16 +59,12 @@ public class SettController implements Initializable {
         cb.setItems(FXCollections.observableArrayList(
                 "Player X", "Player O")
         );
-
-
 }
 
     public void backMenu(MouseEvent mouseEvent) throws IOException {
         try {
             FileWriter fileW = new FileWriter("settings_file");
             BufferedWriter bufferedW = new BufferedWriter(fileW);
-
-
 
         String open, color1, color2, size_b, size[], nameP1, nameP2;
 
@@ -101,14 +90,11 @@ public class SettController implements Initializable {
         bufferedW.write("board_size:" + size[0]);
 
         bufferedW.close();
-
-                fileW.close();
+        fileW.close();
 
         } catch (Exception e) {
             System.out.println("not opening");
         }
-
-
 
         Stage stage = (Stage) this.setty.getScene().getWindow();
         VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -117,6 +103,4 @@ public class SettController implements Initializable {
         stage.setScene(s);
         stage.show();
     }
-
-
 }

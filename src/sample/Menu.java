@@ -59,6 +59,7 @@ public class Menu implements Initializable {
         GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
         Scene s = new Scene(root, 520,450);
+        s.getStylesheets().add(getClass().getResource("settings.css").toExternalForm());
         stage.setScene(s);
         stage.show();
     }
