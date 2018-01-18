@@ -120,6 +120,8 @@ public class Board extends GridPane{
 
     public void draw(Color c1, Color c2) {
 
+        boolean switchcolorrow = true;
+        boolean switchcolorcol = true;
         //size of the board
         int height = (int) this.getPrefHeight();
         int width = (int) this.getPrefWidth();
@@ -129,9 +131,16 @@ public class Board extends GridPane{
         int cellWidth = width / this.size;
 
         for (int i = 1; i < this.size; i++) {
+            switchcolorcol =false;
             for (int j = 1; j < this.size; j++) {
-
-                Rectangle boardRec = new Rectangle(cellWidth, cellHeight, Color.AZURE);
+                Rectangle boardRec;
+                if (switchcolorrow && switchcolorcol) {
+                    boardRec = new Rectangle(cellWidth, cellHeight, Color.AZURE);
+                    switchcolor = false;
+                } else {
+                    boardRec = new Rectangle(cellWidth, cellHeight, Color.rgb(195,140,47));
+                    switchcolor = true;
+                }
                 boardRec.setStroke(Color.BLACK);
                 boardRec.setStrokeType(StrokeType.INSIDE);
                 Light.Point rec = new Light.Point();

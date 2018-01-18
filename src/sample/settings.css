@@ -1,3 +1,72 @@
 .root {
-    -fx-background-image: url("game.jpg");
+    -fx-background-image: url("bg3.jpg");
+}
+#set {
+    -fx-font-family: Purisa;
+    -fx-font-weight: bold;
+}
+#p1 {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#p2 {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#op {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#p1c {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#p2c {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#bs {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#BackButton {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#name1 {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#name2 {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#player1color {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#player2color {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#board_size {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+#openPlayer {
+    -fx-font-family: Purisa;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
 }
