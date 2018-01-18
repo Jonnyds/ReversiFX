@@ -67,7 +67,7 @@ public class SettController implements Initializable {
     /**
      * writes to the settings file and returns to the menu scene
      * @param mouseEvent when the button is clicked
-     * @throws IOException 
+     * @throws IOException
      */
     public void backMenu(MouseEvent mouseEvent) throws IOException {
         try {
