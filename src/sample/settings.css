@@ -70,3 +70,23 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+#openPlayer {
+    -fx-background-color: linear-gradient(gainsboro,pink,plum,cadetblue);
+}
+
+#player1color {
+    -fx-background-color: linear-gradient(gainsboro,pink,plum,cadetblue);
+}
+
+#player2color {
+    -fx-background-color: linear-gradient(gainsboro,pink,plum,cadetblue);
+}
+
+#board_size {
+    -fx-background-color: linear-gradient(gainsboro,pink,plum,cadetblue);
+}
+
+.button {
+    -fx-background-color: linear-gradient(gainsboro,pink,plum,cadetblue);
+}
