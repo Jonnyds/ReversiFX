@@ -114,21 +114,18 @@ public class GameFlow implements Initializable {
 
         if (this.player2.get_disc_list().size() > this.player1.get_disc_list().size()) {
             endPlayerLabel.setText("\n    Game over!\n\n   The Winner Is: \n\n\t" + this.nameP2);
-            System.out.println("The white player is the winner");
         } else {
             if (this.player2.get_disc_list().size() < this.player1.get_disc_list().size()) {
                 endPlayerLabel.setText("\n    Game over!\n\n   The Winner Is: \n\n\t" + this.nameP1);
-                System.out.println("The black player is the winner");
             } else {
-                endPlayerLabel.setText("\n\t  Game over!\n\n   It's A TIE");
-                System.out.println("It's a tie");
+                endPlayerLabel.setText("\n  Game over!\n\n   It's A TIE");
             }
         }
 
         hBox.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
         hBox.getChildren().addAll(endPlayerLabel);
 
-        Scene scene = new Scene(hBox, 400, 250);
+        Scene scene = new Scene(hBox, 400, 300);
 
         Stage seconderyStage = new Stage();
         seconderyStage.setTitle("Game Over");
@@ -247,7 +244,6 @@ public class GameFlow implements Initializable {
                 this.boardlogic.swapPlayers();
                 this.boardlogic.clearVec();
                 this.turn = O;
-                System.out.println("It's the white player's turn \n");
                 this.controller.currentplayer.setText(this.nameP1);
                 break;
             case O:
@@ -255,7 +251,6 @@ public class GameFlow implements Initializable {
                 this.boardlogic.clearVec();
                 this.turn = X;
                 this.controller.currentplayer.setText(this.nameP2);
-                System.out.println("It's the black player's turn \n");
                 break;
             case E:
                 break;
@@ -341,8 +336,6 @@ public class GameFlow implements Initializable {
             g.getPlaying_board().setPrefHeight(newValue.doubleValue());
         });
         g.getPlaying_board().draw(color1,color2);
-        //this.VBOX.getChildren().get(2).setOnMouseClicked(event -> {endGameEvent();});
-        // root.getChildren().get(1).setOnMouseClicked(event -> {endGameEvent();});
     }
 
     public void endGameEvent() throws IOException {
@@ -373,8 +366,6 @@ public class GameFlow implements Initializable {
                 break;
             }
         }
-
         return contain;
     }
-
 }

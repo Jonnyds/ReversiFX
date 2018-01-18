@@ -31,7 +31,7 @@ public class Menu implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.VBOX.getChildren().get(0).setTranslateX(130);
+        this.VBOX.getChildren().get(0).setTranslateX(105);
         this.VBOX.getChildren().get(0).setTranslateY(15);
         this.VBOX.getChildren().get(1).setTranslateX(185);
         this.VBOX.getChildren().get(1).setTranslateY(70);
@@ -50,6 +50,7 @@ public class Menu implements Initializable {
         HBox root = (HBox) FXMLLoader.load(getClass().getResource("Reversi.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
         Scene s = new Scene(root, 620,400);
+        s.getStylesheets().add(getClass().getResource("board.css").toExternalForm());
         stage.setScene(s);
         stage.show();
 

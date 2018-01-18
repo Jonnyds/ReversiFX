@@ -12,12 +12,12 @@
         <children>
                 <GridPane  fx:id="GRID"  hgap="0" vgap="10">
                         <children>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Current Player: "/>
-                                <Text fx:id="currentplayer" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Current Player: " fx:id="cp"/>
+                                <Text fx:id="currentplayer" translateX="-40" GridPane.columnIndex="1" GridPane.rowIndex="0"
                                        text="1"/>
-                                <Text fx:id="nameplayer2" GridPane.columnIndex="0" GridPane.rowIndex="1" text="Player 1 Score: "/>
+                                <Text fx:id="nameplayer1" GridPane.columnIndex="0" GridPane.rowIndex="1" text="Player 1 Score: "/>
                                 <Text fx:id="score1" GridPane.columnIndex="1" GridPane.rowIndex="1" text="2"/>
-                                <Text fx:id="nameplayer1" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                                <Text fx:id="nameplayer2" GridPane.columnIndex="0" GridPane.rowIndex="2"
                                        text="Player 2 Score: "/>
                                 <Text fx:id="score2" GridPane.columnIndex="1" GridPane.rowIndex="2" text="2"/>
                                 <Text fx:id="nomoremoves" GridPane.columnIndex="0" GridPane.rowIndex="5"

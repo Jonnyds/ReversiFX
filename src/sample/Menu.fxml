@@ -9,7 +9,7 @@
 <VBox fx:id="VBOX" fx:controller="sample.Menu" xmlns="http://javafx.com/javafx/8.0.0"
       xmlns:fx="http://javafx.com/fxml/1" >
     <children>
-        <Label fx:id="welcome" text="WELCOME" prefHeight="90" prefWidth="300" >
+        <Label fx:id="welcome"  text="WELCOME" prefHeight="90" prefWidth="300" >
             <font>
                 <Font size="50" ></Font>
             </font>
