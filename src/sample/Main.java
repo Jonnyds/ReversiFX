@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
+    /**
+     * the start application function setting the stage of the menu
+     */
     public void start(Stage primaryStage) {
         try
         {
@@ -23,6 +26,11 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+    /**
+     * the main function that launches the program
+     * @param args param
+     */
     public static void main(String[] args) {
         launch(args);
     }

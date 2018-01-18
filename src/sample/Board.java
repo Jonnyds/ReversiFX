@@ -11,11 +11,13 @@ import javafx.scene.shape.StrokeType;
 
 import static sample.DiscSymbol.*;
 
-
+/**
+ * the board object (a Gridpane object).
+ */
 public class Board extends GridPane{
 
-    private Disc[][] board; // A double pointer variable used to create a matrix (board) in the constructor.
-    private int size;
+    private Disc[][] board; // A Disc matrix - the game board.
+    private int size; // the size of the board.
     @FXML
     public GridPane root;
     final int defaultSize = 8;
@@ -32,8 +34,8 @@ public class Board extends GridPane{
 
     /**
      * Initializes the board with the first 4 disc objects in the middle of the matrix (the board).
-     * @param white recieves the white player signed 'O'.
-     * @param black recieves the black player signed 'X'.
+     * @param white (player2) recieves the white player signed 'O'.
+     * @param black (player1) recieves the black player signed 'X'.
      */
     public void init(Player white, Player black){
 
@@ -80,31 +82,6 @@ public class Board extends GridPane{
     }
 
     /**
-     * Prints the game board.
-     */
-    public void print() {
-        for (int i = 0; i < this.size; ++i) {
-            for (int j = 0; j < this.size; ++j) {
-                if (i == 0 && j > 0) {
-                    System.out.print(j + "" + P.asChar());
-                } else {
-                    if (j == 0 && i > 0) {
-                        System.out.print(i + "" + P.asChar());
-                    } else {
-                        System.out.print(this.board[i][j].get_sym().asChar() + "" + P.asChar());
-                    }
-                }
-
-            }
-            System.out.println();
-            for (int j = 0; j < this.size; ++j) {
-                System.out.print(M.asChar() + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    /**
      * @return the size of the matrix.
      */
     public int get_size() {
@@ -118,6 +95,11 @@ public class Board extends GridPane{
         return this.board;
     }
 
+    /**
+     * Draws the board on the stage (gridpane).
+     * @param c1 the color of player 1.
+     * @param c2 the color of player 2.
+     */
     public void draw(Color c1, Color c2) {
 
         //size of the board

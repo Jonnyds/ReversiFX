@@ -38,6 +38,9 @@ public class SettController implements Initializable {
 
 
     @Override
+    /**
+     * initializes the settings scene
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         ColorPicker colorPicker1 = new ColorPicker();
@@ -61,6 +64,11 @@ public class SettController implements Initializable {
         );
 }
 
+    /**
+     * writes to the settings file and returns to the menu scene
+     * @param mouseEvent when the button is clicked
+     * @throws IOException 
+     */
     public void backMenu(MouseEvent mouseEvent) throws IOException {
         try {
             FileWriter fileW = new FileWriter("settings_file");

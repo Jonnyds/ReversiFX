@@ -7,6 +7,9 @@
 
 package sample;
 
+/**
+ * Enum object for placing the right symbols on the board.
+ */
 public enum DiscSymbol {
     X('X'),
     O('O'),

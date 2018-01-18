@@ -10,7 +10,6 @@ package sample;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Player {
 
@@ -53,41 +52,6 @@ public class Player {
         }
     }
 
-    public Coordinates makeMove(BoardLogic bl) {
-        Scanner var = new Scanner(System.in);
-
-        boolean move_found = false;
-        Coordinates coor;
-        int x = 0, y = 0;
-        System.out.println("possible moves:");
-        bl.print_vec();
-
-
-        while (!move_found) { // This part checks of the input is valid.
-
-            System.out.println("please enter the Coordinates of the move you would like to do:");
-            x = var.nextInt();
-            y = var.nextInt();
-            for (int move = 0; move < bl.getValidMoves().size(); move++) {
-                if (x == bl.getValidMoves().get(move).getCoordinatesX() && y ==
-                        bl.getValidMoves().get(move).getCoordinatesY()) {
-                    move_found = true;
-                    System.out.println("Your move is (" + x + ',' + y + ')');
-                }
-            }
-
-            if(!move_found) {
-                System.out.println("Your input is not valid ");
-            }
-        }
-
-        coor = new Coordinates(x,y);
-        return coor;
-
-        // adds the chosen location disc to board
-    }
-
-
     /**
      * @return the player's disc list.
      */
@@ -102,6 +66,9 @@ public class Player {
         return this.symbol;
     }
 
+    /**
+     * @return the player's color
+     */
     public Color getColor(){ return this.color; }
 
 }

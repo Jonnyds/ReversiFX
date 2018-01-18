@@ -39,33 +39,36 @@ public class GameFlow implements Initializable {
 
     private Board playing_board; // The game's board object.
     private Player player1; // The black player (with symbol X).
-    private String nameP1;
+    private String nameP1; // the name of player 1
     private Player player2; // The white player (with symbol O).
-    private String nameP2;
+    private String nameP2; // the name of player 2
     private DiscSymbol turn; // Which player does the turn belong to.
-    private int no_more_moves;
-    private BoardLogic boardlogic;
-    private GameFlow  controller;
+    private int no_more_moves; // no more moves indicator
+    private BoardLogic boardlogic; // the game's logic
+    private GameFlow  controller; // the empty controller object that holds the scene
 
     @FXML
-    private HBox root;
+    private HBox root; // the Hbox node
     @FXML
-    private Text score1;
+    private Text score1; // player1's score text
     @FXML
-    private Text score2;
+    private Text score2; //player'2 score text
     @FXML
-    private Text nameplayer1;
+    private Text nameplayer1; // player1's name
     @FXML
-    private Text nameplayer2;
+    private Text nameplayer2;// player2's name
     @FXML
-    private Text nomoremoves;
+    private Text nomoremoves;// no more moves message
     @FXML
-    private Text currentplayer;
+    private Text currentplayer;//  current player text
 
     /**
-     * The gameflow object constructor.
-     *
-     * @param n the board's size.
+     * the gameflow object constructor
+     * @param n the board's size
+     * @param c1 player1's color
+     * @param c2 player2's color
+     * @param opening the opening player
+     * @param control the controller object
      */
     public GameFlow(int n, Color c1, Color c2, String opening, GameFlow control) {
         this.controller = control;
@@ -88,7 +91,9 @@ public class GameFlow implements Initializable {
     }
 
 
-
+    /**
+     * empty constructor for the controller
+     */
     public GameFlow() {
     }
 
@@ -101,7 +106,7 @@ public class GameFlow implements Initializable {
 
 
     /**
-     * A function that prints a winning message according to the game's results.
+     * A function that creates a new window that prints a winning message according to the game's results.
      */
     public void winMassege() throws IOException {
 
@@ -170,7 +175,9 @@ public class GameFlow implements Initializable {
     }
 
     /**
-     * Manages a game after the players and board are created.
+     * Manages a game after the players and board are created is active with every click on the board.
+     *@param x the x coordinate of the player's click
+     *@param y the y coordinate of the player's click
      */
     public void play(double x, double y) throws IOException {
 
@@ -182,7 +189,6 @@ public class GameFlow implements Initializable {
         if (checkMove(possible_moves, coor)) {
             Disc d = new Disc(this.turn, coor.getCoordinatesX(), coor.getCoordinatesY());
             this.playing_board.add_to_board(d, coor.getCoordinatesX(), coor.getCoordinatesY());
-
 
             switch (turn) {
                 case X:
@@ -225,7 +231,6 @@ public class GameFlow implements Initializable {
 
     /**
      * A function that switches the turns.
-     *
      * @param no_moves accepts true if the player does not have any moves to make or false if he does,
      *                 according to this param it prints (or doesnt) a message.
      */
@@ -265,6 +270,9 @@ public class GameFlow implements Initializable {
     }
 
     @Override
+    /**
+     * The controller's initializer
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // FileReader reads text files in the default encoding.
 
@@ -273,7 +281,7 @@ public class GameFlow implements Initializable {
         int size_n = 0;
 
         try {
-
+            // reading from the settings file
             FileReader fileR = new FileReader("settings_file");
 
             BufferedReader bufferedReader = new BufferedReader(fileR);
@@ -313,11 +321,13 @@ public class GameFlow implements Initializable {
         g.getPlaying_board().setPrefHeight(400);
         g.getPlaying_board().setId("boardy");
         g.initGame();
+
         root.getChildren().add(0, g.getPlaying_board());
         root.getChildren().get(0).setTranslateX(20);
         root.getChildren().get(0).setTranslateY(20);
         this.nameplayer1.setText(nameP1 + "'s score is:");
         this.nameplayer2.setText(nameP2 + "'s score is:");
+        // the mouse click event on the board
         g.getPlaying_board().setOnMouseClicked(event -> {
             try {
                 g.play(event.getX(), event.getY());
@@ -338,6 +348,10 @@ public class GameFlow implements Initializable {
         g.getPlaying_board().draw(color1,color2);
     }
 
+    /**
+     * back to menu event (button clicked);
+     * @throws IOException
+     */
     public void endGameEvent() throws IOException {
         Stage stage = (Stage) this.root.getScene().getWindow();
         VBox root = (VBox) FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -347,7 +361,12 @@ public class GameFlow implements Initializable {
         stage.show();
     }
 
-
+    /**
+     * converts the mouse click coordinates to board coordinate.
+     * @param x mouse click x coordinate
+     * @param y mouse click y coordinate
+     * @return board coordinate (int)
+     */
     public Coordinates pressTurnCoor(double x, double y) {
 
         int height = (int) this.playing_board.getPrefHeight();
@@ -357,6 +376,12 @@ public class GameFlow implements Initializable {
         return new Coordinates((int) cellHeight + 1, (int) cellWidth + 1);
     }
 
+    /**
+     * checks if a move is found on the possible moves arraylist
+     * @param possible the possible moves array list
+     * @param c the move to be found (coordinates object)
+     * @return if the move was found in the arraylist
+     */
     public Boolean checkMove(ArrayList<Coordinates> possible, Coordinates c) {
         Boolean contain = false;
         for (int i = 0; i < possible.size(); i++) {

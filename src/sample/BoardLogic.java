@@ -38,7 +38,6 @@ public class BoardLogic {
                 check_direction(direction ,j ,k );
             }
         }
-      //  check_double();
         return this.valid_points;
     }
 

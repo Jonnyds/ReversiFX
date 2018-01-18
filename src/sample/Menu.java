@@ -26,9 +26,12 @@ import static java.lang.System.exit;
 public class Menu implements Initializable {
 
     @FXML
-    private VBox VBOX;
+    private VBox VBOX; // vbox layout
 
     @Override
+    /**
+     * initialize the menu scene
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.VBOX.getChildren().get(0).setTranslateX(105);
@@ -42,10 +45,19 @@ public class Menu implements Initializable {
 
     }
 
+    /**
+     * exits the game
+     * @param mouseEvent when the button is clicked
+     */
     public void endGameEvent(MouseEvent mouseEvent) {
         exit(0);
     }
 
+    /**
+     * starts a new game according to the settings
+     * @param mouseEven when the button is clicked
+     * @throws IOException
+     */
     public void startgame(MouseEvent mouseEven) throws IOException {
         HBox root = (HBox) FXMLLoader.load(getClass().getResource("Reversi.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
@@ -56,6 +68,11 @@ public class Menu implements Initializable {
 
     }
 
+    /**
+     * moves to the settings screen (scene)
+     * @param mouseEvent when the button is clicked
+     * @throws IOException
+     */
     public void movetosettings(MouseEvent mouseEvent) throws IOException {
         GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Stage stage = (Stage) this.VBOX.getScene().getWindow();
